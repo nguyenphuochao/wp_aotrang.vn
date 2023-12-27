@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Style.css -->
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/style.css">
+    <?php wp_head(); ?>
 </head>
 
 <body>
@@ -61,7 +62,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <?php foreach ($submenu_items as $submenu_item) { ?>
-                                        <a class="dropdown-item" href="<?php echo $menu_item->url  ?>"><?php echo $submenu_item->title ?></a>
+                                        <a class="dropdown-item" href="<?php echo $submenu_item->url  ?>"><?php echo $submenu_item->title ?></a>
                                     <?php } ?>
                                 </div>
                             </li>

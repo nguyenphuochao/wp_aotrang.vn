@@ -11,4 +11,13 @@ function register_my_menus()
         )
     );
 }
-// Code up ảnh media
+// Trình soạn thảo cũ
+add_filter('use_block_editor_for_post', '__return_false');
+// Ảnh đại diện
+add_theme_support('post-thumbnails');
+
+// Hàm chuyển tất cả chữ hoa về chữ hoa đầu mỗi từ
+function chuyenChuHoaThanhThuong($name)
+{
+    return mb_convert_case($name, MB_CASE_TITLE, "UTF-8");
+}
