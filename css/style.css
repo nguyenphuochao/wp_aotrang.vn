@@ -1,0 +1,227 @@
+/* Reset css */
+a {
+    text-decoration: none !important;
+}
+
+/* contants hr */
+hr {
+    height: 5px;
+    background-color: grey;
+}
+
+hr.line {
+    height: 1px;
+    border-bottom: dotted;
+    opacity: .3;
+}
+
+hr.footer {
+    height: 0.5px;
+    background-color: rgb(189, 182, 182);
+}
+
+/* End contants hr */
+.col-image {
+    overflow: hidden;
+    position: relative;
+}
+
+/* 
+.col-image img {
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.col-image img:hover {
+    transform: scale(1.1);
+} */
+
+/* Root color */
+.bg-orange {
+    background-color: #FF7200;
+}
+
+.bg-primary {
+    background-color: #130f6d !important;
+}
+
+.bg-primary-light {
+    background-color: #0186eb;
+}
+
+.text-brown {
+    color: #3E0204 !important;
+}
+
+/* End Root color */
+
+/* fontawesome*/
+i.fa-pencil {
+    font-size: 10px;
+}
+
+i.fa-chevron-down {
+    font-size: 10px;
+}
+
+nav i.fa-magnifying-glass {
+    cursor: pointer;
+}
+
+nav .nav-item.active {
+    background-color: #0186eb;
+}
+
+/* End fontawesome */
+
+/* Navigation */
+nav {
+    max-height: 38px;
+    background-color: #FF7200;
+}
+
+nav .nav-item .nav-link {
+    color: white !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+nav .nav-item:hover {
+    background-color: #0186eb;
+}
+
+nav form [type=text] {
+    height: 27px !important;
+    margin-top: 6px;
+    border-radius: 10px;
+}
+
+nav .dropdown:hover>.dropdown-menu {
+    display: block;
+    text-transform: uppercase;
+    background-color: white;
+}
+
+nav .dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+/* End Navigation */
+
+/* List News Component*/
+.news-hot .content-hot {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    border: 5px solid #332002;
+    padding: 5px;
+    color: #3e0204;
+    font-weight: bold;
+    border-radius: 10px;
+
+}
+
+.news-hot .content-hot-sub {
+    position: absolute;
+    bottom: 10px;
+    width: 93%;
+    padding-left: 5px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(5, 5, 5, 0));
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    color: white;
+
+}
+
+.list-news .bg-primary h4,
+.list-news .bg-primary h5 {
+    position: absolute;
+    bottom: -10px;
+    padding: 20px;
+    color: #130f6d;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1));
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    mask-image: linear-gradient(to top, black 50%, transparent 100%)
+}
+
+/* End List News Component */
+
+/* Reponsive ở đây */
+@media screen and (max-width: 1200px) {
+    nav {
+        max-height: 60px;
+    }
+
+    nav a.nav-link {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .logo-image {
+        text-align: center;
+    }
+
+    nav {
+        max-height: 50px;
+    }
+
+    nav a.nav-link {
+        font-size: initial;
+    }
+
+    nav #collapsibleNavId {
+        z-index: 999;
+        background-color: #FF7200;
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    nav {
+        max-height: 50px;
+    }
+
+    .news-hot .news-hot-sub {
+        display: none;
+    }
+
+    .list-news h5,
+    .list-news span {
+        font-size: 13px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .logo-image img {
+        width: 120px;
+    }
+
+    .news-hot .col-image img {
+        height: 300px;
+    }
+
+    .news-hot .content-hot h3 {
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    .list-news .bg-primary .col-image img {
+        height: 190px;
+    }
+
+    .list-news .bg-primary .col-image h4 {
+        font-size: 13.28px;
+    }
+
+    /* Footer */
+    footer h5 {
+        font-size: 16px;
+    }
+}
