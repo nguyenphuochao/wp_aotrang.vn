@@ -21,7 +21,7 @@
 <body>
     <!-- Logo -->
     <div class="logo-image pl-0 pt-3 pb-3 container">
-        <a href="<?php home_url() ?>"><img src="<?php bloginfo('template_directory') ?>/image/logoao-trang.png" alt=""></a>
+        <a href="<?php echo home_url() ?>"><img src="<?php bloginfo('template_directory') ?>/image/logoao-trang.png" alt=""></a>
     </div>
     <!-- End Logo -->
     <!-- Navigation -->
