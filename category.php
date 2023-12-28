@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 <div class="container category">
-    <h2 class="mt-4">Kết quả tìm: <span class="text-orange font-weight-bold"><?php echo $_GET['s'] ?></span> </h2>
     <div class="row mt-3">
         <div class="col-md-10">
             <!-- Section 1 -->
@@ -84,7 +83,7 @@
             <!-- End Pagination -->
         </div>
         <div class="col-md-2">
-            <h6><strong>ĐƯỢC XEM NHIỀU</strong></h6>
+            <h2>Tin Mới</h2>
         </div>
     </div>
 </div>

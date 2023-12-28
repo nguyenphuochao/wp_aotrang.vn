@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Style.css -->
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/style.css">
+    <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/detail.css">
+    <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/category.css">
     <?php wp_head(); ?>
 </head>
 
@@ -56,7 +58,7 @@
                             $submenu_items = get_submenu_items($menu_item->ID, $menu_items);
                     ?>
                             <li class="nav-item <?php if ($submenu_items) echo 'dropdown';
-                                                echo $key == 0 ? 'active' : '' ?>">
+                                                echo ($key == 0) ? 'active' : '' ?>">
                                 <a class="nav-link" href="<?php echo $menu_item->url  ?>">
                                     <?php echo $menu_item->title; ?> <?php echo $submenu_items ? '<i class="fa-solid fa-chevron-down"></i>' : '' ?>
                                 </a>
@@ -72,8 +74,8 @@
                     ?>
                     <!-- Form -->
                     <li class="nav-item-form position-relative">
-                        <form class="form-inline">
-                            <input class="form-control search w-100" type="text" placeholder="Search" aria-label="Search">
+                        <form class="form-inline" action="<?php bloginfo('url'); ?>" method="GET">
+                            <input name="s" class="form-control search w-100" type="text" placeholder="Search" value="<?php echo $_GET['s']; ?>" aria-label="Search">
                             <i class="fa-solid fa-magnifying-glass position-absolute" style="top: 12px;right: 10px"></i>
                         </form>
                     </li>
