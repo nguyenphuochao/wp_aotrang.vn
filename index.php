@@ -35,7 +35,7 @@
                             <a href="<?php the_permalink(); ?>"><img width="100%" height="189" src="<?php echo $featured_img_url; ?>" alt="<?php the_title() ?>"></a>
                             <div class="content-hot-sub text-light">
                                 <h6><strong><a class="text-light" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
-                                <div><small><?php echo  get_the_time('d/m/Y') ?> <i class="fa-solid fa-eye"></i> 999</small></div>
+                                <div><small><?php echo  get_the_time('d/m/Y') ?> <i class="fa-solid fa-eye"></i> <?php echo getPostViews(get_the_ID()); ?></small></div>
                             </div>
                         </div>
                     <?php endwhile;
@@ -80,9 +80,9 @@
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                         <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
-                        <div class="item"><a href="<?php the_permalink(); ?>"><img src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
+                        <div class="item"><a href="<?php the_permalink(); ?>"><img width="100%" height="160" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
                             <a href="<?php the_permalink(); ?>" class="text-dark">
-                                <h6 class="mt-1"><?php the_title(); ?></h6>
+                                <h6 class="mt-1"><strong><?php the_title(); ?></strong></h6>
                             </a>
                         </div>
                     <?php endwhile;
@@ -121,22 +121,32 @@
         </div>
         <div class="col-md-3 sidebar mt-2">
             <div class="bg-orange text-center text-light font-weight-bold rounded text-uppercase">Xem nhiều</div>
-            <div class="view-list mt-3">
-                <h6>Dư luận lạnh lùng trước giải thích về quản lí yếu kém</h6>
-                <small class="font-italic">07/12/2023</small>
-            </div>
-            <div class="view-list mt-3">
-                <h6>Dư luận lạnh lùng trước giải thích về quản lí yếu kém</h6>
-                <small class="font-italic">07/12/2023</small>
-            </div>
-            <div class="view-list mt-3">
-                <h6>Dư luận lạnh lùng trước giải thích về quản lí yếu kém</h6>
-                <small class="font-italic">07/12/2023</small>
-            </div>
-            <div class="view-list mt-3">
-                <h6>Dư luận lạnh lùng trước giải thích về quản lí yếu kém</h6>
-                <small class="font-italic">07/12/2023</small>
-            </div>
+            <!-- Query post -->
+            <?php
+            $args = array(
+                'post_type'      => 'post', // Thay 'post' bằng kiểu bài viết của bạn nếu cần
+                'posts_per_page' => -1, // -1 để lấy tất cả bài viết
+                'showposts' => 11, // hiển thị 12 dòng post
+                'meta_key'       => 'post_views_count',
+                'orderby'        => 'meta_value_num',
+                'order'          => 'DESC',
+            );
+            $query = new WP_Query($args);
+            // Duyệt qua kết quả query
+            if ($query->have_posts()) {
+                while ($query->have_posts()) {
+                    $query->the_post();
+            ?>
+                    <div class="view-list mt-3">
+                        <h6><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
+                        <small class="font-italic"><?php echo get_the_date('d/m/Y'); ?></small>
+                    </div>
+            <?php
+                }
+            }
+            wp_reset_postdata();
+            ?>
+            <!-- Query post -->
         </div>
     </div>
     <!-- Luyện thi -->
@@ -214,7 +224,7 @@
             </section>
         </div>
         <div class="col-md-3 sidebar mt-2">
-            <img width="100%" src="<?php bloginfo('template_directory') ?>/image/cococ.jpg" alt="">
+            <a target="_blank" href="https://coccoc.com/download/thanks?utm_source=internal&utm_campaign=40823_1703043814&utm_medium=referral"><img width="100%" src="<?php bloginfo('template_directory') ?>/image/cococ.jpg" alt="coccoc.com"></a>
         </div>
     </div>
     <!-- Tuyển sinh -->
@@ -312,7 +322,7 @@
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                         <?php $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); ?>
-                        <div class="item"><a href="<?php the_permalink(); ?>"><img src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                        <div class="item"><a href="<?php the_permalink(); ?>"><img width="100%" height="160" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
                             <h6 class="mt-1"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
                         </div>
                     <?php endwhile;
@@ -326,8 +336,8 @@
                     <?php global $wp_query;
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
-                        <?php 
-                        $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); 
+                        <?php
+                        $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full');
                         $post_time = get_post_time('U', false, $post);
                         $time_diff = human_time_diff($post_time, current_time('U')) . ' trước';
                         ?>
@@ -350,11 +360,86 @@
         </div>
         <div class="col-md-3 sidebar mt-2">
             <div>
-                <img width="100%" height="460" src="<?php bloginfo('template_directory') ?>/image/sach_moi.webp" alt="">
+                <a target="_blank" href="http://chibooks.vn/"><img width="100%" height="460" src="<?php bloginfo('template_directory') ?>/image/sach_moi.webp" alt="http://chibooks.vn/"></a>
             </div>
             <div class="mt-3">
-                <img width="100%" height="460" src="<?php bloginfo('template_directory') ?>/image/thanh_xuan.webp" alt="">
+                <a target="_blank" href="https://vansinhchau.vn/collagen-nuoc-water-collagen-lolita-white"><img width="100%" height="460" src="<?php bloginfo('template_directory') ?>/image/thanh_xuan.webp" alt="collagen-nuoc-water-collagen-lolita-white"></a>
             </div>
+        </div>
+    </div>
+    <!-- Việc làm -->
+    <hr class="line">
+    <div class="row mt-2">
+        <div class="col-md-9">
+            <section class="list-news viec-lam">
+                <div class="d-flex justify-content-between align-items-center">
+                    <?php
+                    $parent_category_slug  = 'viec-lam';
+                    $parent_category = get_term_by('slug', $parent_category_slug, 'category');
+                    $child_categories = get_categories(array('parent' => $parent_category->term_id));
+                    ?>
+                    <div>
+                        <h3><strong><a class="text-dark" href="<?php echo get_category_link($parent_category->term_id); ?>"><?php echo chuyenChuHoaThanhThuong($parent_category->name); ?></a></strong></h3>
+                    </div>
+                    <div>
+                        <h6 class="text-right"><strong>
+                                <?php foreach ($child_categories as $key => $child_category) {
+                                    echo '<a class="text-dark" href="' . get_category_link($child_category->term_id) . '">' . mb_convert_case($child_category->name, MB_CASE_TITLE, "UTF-8") . ' | ' . ($key == 5 ? '<br>' : '') . '</a>';
+                                }
+                                ?>
+                            </strong></h6>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <!-- Get post News Query -->
+                    <?php $getposts = new WP_query();
+                    $getposts->query('post_status=publish&showposts=1&post_type=post&category_name=viec-lam'); ?>
+                    <?php global $wp_query;
+                    $wp_query->in_the_loop = true; ?>
+                    <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
+                        <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                        $post_time = get_post_time('U', false, $post);
+                        $time_diff = human_time_diff($post_time, current_time('U')) . ' trước';
+                        ?>
+                        <div class="col-md-6">
+                            <a href="<?php the_permalink(); ?>"><img width="100%" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
+                            <h4 class="mt-2 mb-3"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
+                            <div>
+                                <span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span>
+                                <small class="ml-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
+                                <div class="mt-4 mb-4 content"><strong><?php the_excerpt(); ?></strong>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
+                    <!-- Get post News Query -->
+                    <div class="col-md-6">
+                        <div class="row">
+                            <!-- Get post News Query -->
+                            <?php $getposts = new WP_query();
+                            $getposts->query('post_status=publish&showposts=4&post_type=post&category_name=viec-lam&offset=1'); ?>
+                            <?php global $wp_query;
+                            $wp_query->in_the_loop = true; ?>
+                            <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
+                                <?php $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); ?>
+                                <div class="col-5 col-sm-4 col-md-6 mb-2">
+                                    <a href="<?php the_permalink(); ?>"><img width="100%" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                                </div>
+                                <div class="col-7 col-sm-8 col-md-6 mb-2">
+                                    <h6><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
+                                </div>
+                            <?php endwhile;
+                            wp_reset_postdata(); ?>
+                            <!-- Get post News Query -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3 sidebar mt-2">
+            <a target="_blank" href="https://coccoc.com/download/thanks?utm_source=internal&utm_campaign=40823_1703043814&utm_medium=referral"><img width="100%" src="<?php bloginfo('template_directory') ?>/image/cococ.jpg" alt="coccoc.com"></a>
         </div>
     </div>
 </div>

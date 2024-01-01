@@ -24,8 +24,8 @@
                 <!-- Get post mặt định -->
             </div>
             <!-- End Section 1 -->
-            <!-- Section 2 -->
 
+            <!-- Section 2 -->
             <div class="row mt-3">
                 <!-- Get post mặt định -->
                 <?php $i = 0; ?>
@@ -43,6 +43,7 @@
                 <!-- Get post mặt định -->
             </div>
             <!-- End Section 2 -->
+
             <!-- Section 3 -->
             <div class="row mt-3">
                 <!-- Get post mặt định -->
@@ -64,6 +65,7 @@
                 <!-- Get post mặt định -->
             </div>
             <!-- End Section 3 -->
+
             <!-- Pagination -->
             <?php if (paginate_links() != '') { ?>
                 <div class="quatrang">
@@ -85,6 +87,7 @@
         </div>
         <div class="col-md-2">
             <h6><strong>ĐƯỢC XEM NHIỀU</strong></h6>
+            <?php get_sidebar(); ?>
         </div>
     </div>
 </div>

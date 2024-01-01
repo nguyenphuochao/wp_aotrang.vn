@@ -21,9 +21,11 @@
 </head>
 
 <body>
+    <!-- Lấy giá trị của url cuối để check dữ liệu -->
+    <?php $last_segment = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)); ?>
     <!-- Logo -->
     <div class="logo-image pl-0 pt-3 pb-3 container">
-        <a href="<?php echo home_url() ?>"><img src="<?php bloginfo('template_directory') ?>/image/logoao-trang.png" alt=""></a>
+        <a href="<?php echo home_url() ?>"><img src="<?php bloginfo('template_directory') ?>/image/logoao-trang.png" alt="áo trắng"></a>
     </div>
     <!-- End Logo -->
     <!-- Navigation -->
@@ -56,9 +58,12 @@
                     foreach ($menu_items as $key => $menu_item) {
                         if ($menu_item->menu_item_parent == 0) {
                             $submenu_items = get_submenu_items($menu_item->ID, $menu_items);
+                            // Lấy tên slug
+                            $url_parts = parse_url($menu_item->url);
+                            $slug = pathinfo($url_parts['path'], PATHINFO_FILENAME);
                     ?>
-                            <li class="nav-item <?php if ($submenu_items) echo 'dropdown';
-                                                echo ($key == 0) ? 'active' : '' ?>">
+                            <li class="nav-item <?php if ($submenu_items) echo 'dropdown ';
+                                                echo ($slug == $last_segment || $key==0) ? 'active' : '' ?>">
                                 <a class="nav-link" href="<?php echo $menu_item->url  ?>">
                                     <?php echo $menu_item->title; ?> <?php echo $submenu_items ? '<i class="fa-solid fa-chevron-down"></i>' : '' ?>
                                 </a>

@@ -2,10 +2,13 @@
 body {
     font-family: "Roboto", sans-serif
 }
+
 a {
     text-decoration: none !important;
 }
-
+nav li.active{
+    background-color: #0186eb;
+}
 /* contants hr */
 hr {
     height: 5px;
@@ -17,7 +20,11 @@ hr.line {
     border-bottom: dotted;
     opacity: .3;
 }
-
+hr.line-title{
+    height: auto;
+    background-color: rgb(215, 220, 225);
+    margin: 5px 0 5px 0;
+}
 hr.footer {
     height: 0.5px;
     background-color: rgb(189, 182, 182);
@@ -50,9 +57,11 @@ hr.footer {
 .text-grey {
     color: #808280;
 }
-.text-dark{
+
+.text-dark {
     color: black !important;
 }
+
 .bg-primary {
     background-color: #130f6d !important;
 }
@@ -238,6 +247,6 @@ nav .dropdown>.dropdown-toggle:active {
 
     /* Footer */
     footer h5 {
-        font-size: 16px;
+        font-size: 15px;
     }
 }

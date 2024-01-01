@@ -18,7 +18,7 @@
     <div class="bottom-footer text-center">
         <div>Giấy phép số 18/GP-STTTT do Sở Thông Tin và Truyền Thông TP.HCM cấp ngày 08/03/2021</div>
         <div>Bản quyền thuộc về Bright Star Media.</div>
-        <div><a href="#" class="text-light">Điều khoản và chính sách</a></div>
+        <div><a href="<?php echo home_url().'/dieu-khoan-va-chinh-sach.html' ?>" class="text-light">Điều khoản và chính sách</a></div>
     </div>
 </footer>
 <!-- End Footer -->
@@ -57,7 +57,7 @@
 <script src="<?php bloginfo('template_directory') ?>/js/script.js"></script>
 <?php wp_footer(); ?>
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0" nonce="36DpzW00"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v18.0" nonce="OvXcLpQ4"></script>
 </body>
 
 </html>

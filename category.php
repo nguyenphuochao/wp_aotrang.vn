@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="container category">
     <div class="row mt-3">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <!-- Section 1 -->
             <div class="row">
                 <!-- Get post mặt định -->
@@ -82,8 +82,9 @@
             <?php } ?>
             <!-- End Pagination -->
         </div>
-        <div class="col-md-2">
-            <h2>Tin Mới</h2>
+        <div class="col-md-3">
+        <h6><strong>TIN MỚI NHẤT</strong></h6>
+                <?php get_sidebar(); ?>
         </div>
     </div>
 </div>
