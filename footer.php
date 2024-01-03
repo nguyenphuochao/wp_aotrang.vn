@@ -1,26 +1,28 @@
-<footer class="bg-orange text-light pb-4 mt-2">
-    <div class="container pt-4">
-        <div class="row">
-            <div class="col-md-8 pt-2">
-                <h5><strong>CÔNG TY CP TRUYỀN THÔNG BRIGHT STAR</strong></h5>
-                <div>Địa chỉ: 4/6B Văn Chung, Phường 13, Quận Tân Bình, Thành phố Hồ Chí Minh</div>
-                <div>Điện thoại/Fax: 028.62966189</div>
-                <div>Chịu trách nhiệm nội dung: Ông Đoàn Lê Khang</div>
-            </div>
-            <div class="col-md-4 pt-2">
-                <h5><strong>LIÊN HỆ HỢP TÁC</strong></h5>
-                <div>Hotline: 0908 942 789</div>
-                <div>Email: brightstar24h@gmail.com</div>
+<div class="container">
+    <footer class="text-light p-2 mt-2 bg-orange">
+        <div class="pt-3">
+            <div class="row">
+                <div class="col-md-8 pt-2">
+                    <h5><strong>CÔNG TY CP TRUYỀN THÔNG BRIGHT STAR</strong></h5>
+                    <div>Địa chỉ: 4/6B Văn Chung, Phường 13, Quận Tân Bình, Thành phố Hồ Chí Minh</div>
+                    <div>Điện thoại/Fax: 028.62966189</div>
+                    <div>Chịu trách nhiệm nội dung: Ông Đoàn Lê Khang</div>
+                </div>
+                <div class="col-md-4 pt-2">
+                    <h5><strong>LIÊN HỆ HỢP TÁC</strong></h5>
+                    <div>Hotline: 0908 942 789</div>
+                    <div>Email: brightstar24h@gmail.com</div>
+                </div>
             </div>
         </div>
-    </div>
-    <hr class="footer">
-    <div class="bottom-footer text-center">
-        <div>Giấy phép số 18/GP-STTTT do Sở Thông Tin và Truyền Thông TP.HCM cấp ngày 08/03/2021</div>
-        <div>Bản quyền thuộc về Bright Star Media.</div>
-        <div><a href="<?php echo home_url().'/dieu-khoan-va-chinh-sach.html' ?>" class="text-light">Điều khoản và chính sách</a></div>
-    </div>
-</footer>
+        <hr class="footer">
+        <div class="bottom-footer text-left">
+            <div>Giấy phép số 18/GP-STTTT do Sở Thông Tin và Truyền Thông TP.HCM cấp ngày 08/03/2021</div>
+            <div>Bản quyền thuộc về Bright Star Media.</div>
+            <div><a href="<?php echo home_url() . '/dieu-khoan-va-chinh-sach.html' ?>" class="text-light">Điều khoản và chính sách</a></div>
+        </div>
+    </footer>
+</div>
 <!-- End Footer -->
 
 <!-- Optional JavaScript -->

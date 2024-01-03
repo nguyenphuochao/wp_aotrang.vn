@@ -77,6 +77,7 @@
     <div class="comment-fb mt-2">
         <div class="fb-comments" data-href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-width="100%" data-numposts="5"></div>
     </div>
+    
 </div>
 
 <?php get_footer(); ?>

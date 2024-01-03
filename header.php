@@ -22,15 +22,17 @@
 
 <body>
     <!-- Lấy giá trị của url cuối để check dữ liệu -->
-    <?php $last_segment = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)); ?>
+    <?php
+    $last_segment = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+    ?>
     <!-- Logo -->
     <div class="logo-image pl-0 pt-3 pb-3 container">
         <a href="<?php echo home_url() ?>"><img src="<?php bloginfo('template_directory') ?>/image/logoao-trang.png" alt="áo trắng"></a>
     </div>
     <!-- End Logo -->
     <!-- Navigation -->
-    <div class="bg-orange" style="position: sticky;top: 0;z-index: 999;">
-        <nav class="navbar navbar-expand-lg navbar-light nav-desktop container">
+    <div class="container" style="position: sticky;top: 0;z-index: 999;">
+        <nav class="navbar navbar-expand-lg navbar-light nav-desktop bg-orange">
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -61,9 +63,11 @@
                             // Lấy tên slug
                             $url_parts = parse_url($menu_item->url);
                             $slug = pathinfo($url_parts['path'], PATHINFO_FILENAME);
+                            // echo $slug;
                     ?>
                             <li class="nav-item <?php if ($submenu_items) echo 'dropdown ';
-                                                echo ($slug == $last_segment || $key==0) ? 'active' : '' ?>">
+                                                echo ($slug == $last_segment) ? 'active' : '' ?>
+                                ">
                                 <a class="nav-link" href="<?php echo $menu_item->url  ?>">
                                     <?php echo $menu_item->title; ?> <?php echo $submenu_items ? '<i class="fa-solid fa-chevron-down"></i>' : '' ?>
                                 </a>
@@ -86,6 +90,42 @@
                     </li>
                 </ul>
             </div>
+        </nav>
+        <nav class="nav-mobile">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <?php foreach ($menu_items as $key => $menu_item) {
+                    if ($menu_item->menu_item_parent == 0) {
+                        $submenu_items = get_submenu_items($menu_item->ID, $menu_items);
+                ?>
+                        <span style="display: flex;justify-content: space-between;">
+                            <a href="<?php echo $menu_item->url ?>"><?php echo $menu_item->title ?></a> 
+                            <a href="#">
+                                <?php if ($submenu_items) { ?>
+                                    <i id="dropdown-icon" class="fa-solid fa-angle-down"></i>
+                                <?php } ?>
+                            </a>
+                        </span>
+                        <div class="submenu-content pl-3" style="display: none;">
+                            <?php foreach ($submenu_items as $submenu_item) { ?>
+                                <a href="<?php echo $submenu_item->url ?>"><?php echo $submenu_item->title ?></a>
+                            <?php } ?>
+                        </div>
+
+                <?php }
+                } ?>
+            </div>
+            <span class="p-2" style="font-size:30px;cursor:pointer;color:white;position: absolute;top:8px" onclick="openNav()">&#9776;</span>
+            <!-- Socical -->
+            <ul class="social-media" style="text-align: center;display: flex;justify-content: center;">
+                <li><a href="https://www.facebook.com/www.phimtruyen.vn"><i style="color: blue;" class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="mailto:sale@bsmi.vn" target="_blank"><i style="color: black;" class="fa-solid fa-square-envelope"></i></a></li>
+                <li><a href="https://www.youtube.com/@phimtruyenofficial"><i style="color: red;" class="fa-brands fa-youtube"></i></a></li>
+                <li><a href="https://www.tiktok.com/@phimtruyen.vn?_d=secCgYIASAHKAESPgo8wQ%2FPGa4DFb11bYa%2FqEdnNFTquKnIhvaJBO2cQeyZPYTlpEqa0ba1cju7bB%2F8AFZaz7%2F0NMr8iM01VoltGgA%3D&object_id=7108639433553331202&page_open_method=scan_code&schema_type=4&sec_uid=MS4wLjABAAAAUquFsxKv-JNpRTvKcsArLULpf4_9Rw_ZpIue-uKjC2IUrbKNRyqHAT7NErA0ch9L&share_app_id=1180&share_author_id=7108639433553331202&share_uid=7108639433553331202&tt_from=scan_code&utm_campaign=client_scan_code&utm_medium=1&utm_source=scan_code&_r=1"><i style="color: white" class="fa-brands fa-tiktok"></i></a></li>
+            </ul>
+            <form method="GET" action="<?php bloginfo('url'); ?>" id="form-search-mobile">
+                <input type="text" name="s" placeholder="Tìm kiếm" value="<?php echo $_GET['s']; ?>">
+            </form>
         </nav>
     </div>
     <!-- End Navigation -->

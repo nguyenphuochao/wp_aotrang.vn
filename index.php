@@ -1,5 +1,18 @@
 <?php get_header() ?>
 <div class="container">
+    <?php
+    $menu_locations = get_nav_menu_locations();
+    $primary_menu_id = $menu_locations['main_nav'];
+    $menu_items = wp_get_nav_menu_items($primary_menu_id);
+    $parent = [];
+    foreach ($menu_items as $key => $menu_item) {
+        if ($menu_item->menu_item_parent == 0) {
+            $parent[] = [$menu_item->ID, $menu_item->title, $menu_item->url];
+        }
+    }
+    //var_dump($parent);
+
+    ?>
     <!-- News Hot -->
     <section class="news-hot mt-3">
         <div class="row">
@@ -10,13 +23,15 @@
             $wp_query->in_the_loop = true; ?>
             <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                 <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
-                <div class="col-image col-md-7">
-                    <a href="<?php the_permalink(); ?>"><img width="100%" style="background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+                <div class="col-md-7 news-hot-main">
+                    <div class="col-image">
+                        <a href="<?php the_permalink(); ?>"><img width="100%" style="background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
                         -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
                         mask-image: linear-gradient(to bottom, black 50%, transparent 100%);" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
-                    <div class="content-hot">
-                        <h3 class="mt-2 font-weight-bold"><a class="text-brown" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                        <p><?php the_excerpt(); ?></p>
+                        <div class="content-hot">
+                            <h3 class="mt-2 font-weight-bold"><a class="text-brown" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                            <p><?php the_excerpt(); ?></p>
+                        </div>
                     </div>
                 </div>
             <?php endwhile;
@@ -29,20 +44,43 @@
                     $getposts->query('post_status=publish&showposts=4&post_type=post&category_name=tin-hot&offset=1'); ?>
                     <?php global $wp_query;
                     $wp_query->in_the_loop = true; ?>
+                    <?php $index = 0; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                         <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
-                        <div class="col-image col-md-6 mb-1 pr-1">
-                            <a href="<?php the_permalink(); ?>"><img width="100%" height="189" src="<?php echo $featured_img_url; ?>" alt="<?php the_title() ?>"></a>
+                        <div class="col-image col-md-6 mb-1 <?php echo $index % 2 == 0 ? 'pr-1' : 'pl-0'; ?>">
+                            <a href="<?php the_permalink(); ?>"><img width="100%" height="205" src="<?php echo $featured_img_url; ?>" alt="<?php the_title() ?>"></a>
                             <div class="content-hot-sub text-light">
                                 <h6><strong><a class="text-light" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
                                 <div><small><?php echo  get_the_time('d/m/Y') ?> <i class="fa-solid fa-eye"></i> <?php echo getPostViews(get_the_ID()); ?></small></div>
                             </div>
+                        </div>
+                        <?php $index++; ?>
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
+                    <!-- Get post News Query -->
+                </div>
+            </div>
+            <!-- Owl Caurosel News Hot -->
+            <div class="col-md-12 owl-caurosel-news-hot">
+                <div class="owl-carousel owl-theme">
+                    <!-- Get post News Query -->
+                    <?php $getposts = new WP_query();
+                    $getposts->query('post_status=publish&showposts=9&post_type=post&category_name=tin-hot&offset=1'); ?>
+                    <?php global $wp_query;
+                    $wp_query->in_the_loop = true; ?>
+                    <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
+                        <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
+                        <div class="item"><a href="<?php the_permalink(); ?>"><img width="100%" height="180" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
+                            <a href="<?php the_permalink(); ?>" class="text-dark">
+                                <h6 class="mt-1"><strong><?php the_title(); ?></strong></h6>
+                            </a>
                         </div>
                     <?php endwhile;
                     wp_reset_postdata(); ?>
                     <!-- Get post News Query -->
                 </div>
             </div>
+            <!-- Owl Caurosel News Hot -->
         </div>
     </section>
     <!-- End News Hot -->
@@ -52,22 +90,27 @@
         <div class="col-md-9">
             <section class="list-news doi-song-gen-z">
                 <div class="d-flex justify-content-between align-items-center">
-                    <?php
-                    $parent_category_slug  = 'doi-song-gen-z';
-                    $parent_category = get_term_by('slug', $parent_category_slug, 'category');
-                    $child_categories = get_categories(array('parent' => $parent_category->term_id));
-                    ?>
                     <div>
-                        <h3><strong><a class="text-dark" href="<?php echo get_category_link($parent_category->term_id); ?>"><?php echo chuyenChuHoaThanhThuong($parent_category->name) ?></a></strong></h3>
+                        <h3><strong><a class="text-dark" href="<?php echo $parent[1][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[1][1]); ?></a></strong></h3>
                     </div>
-                    <div>
+                    <div class="d-none d-md-block">
                         <h6><strong>
-                                <?php foreach ($child_categories as $child_category) {
-                                    echo '<a class="text-dark" href="' . get_category_link($child_category->term_id) . '">' . mb_convert_case($child_category->name, MB_CASE_TITLE, "UTF-8") . ' | ' . '</a>';
+                                <?php foreach (get_submenu_items($parent[1][0], $menu_items) as $child) {
+                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . '</a>';
                                 }
                                 // Trường tôi | Nhỏ to tâm sự | Cảnh giác 247 | Sách hay
                                 ?>
                             </strong></h6>
+                    </div>
+                    <div class="d-block d-md-none">
+                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Xem thêm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <?php foreach (get_submenu_items($parent[1][0], $menu_items) as $child) { ?>
+                                <a class="dropdown-item" href="<?php echo $child->url ?>"><?php echo $child->title ?></a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -155,24 +198,29 @@
         <div class="col-md-9">
             <section class="list-news luyen-thi">
                 <div class="d-flex justify-content-between align-items-center">
-                    <?php
-                    $parent_category_slug  = 'luyen-thi';
-                    $parent_category = get_term_by('slug', $parent_category_slug, 'category');
-                    $child_categories = get_categories(array('parent' => $parent_category->term_id));
-                    ?>
                     <div>
-                        <h3><strong><a class="text-dark" href="<?php echo get_category_link($parent_category->term_id); ?>"><?php echo chuyenChuHoaThanhThuong($parent_category->name); ?></a></strong></h3>
+                        <h3><strong><a class="text-dark" href="<?php echo $parent[2][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[2][1]); ?></a></strong></h3>
                     </div>
-                    <div>
+                    <div class="d-none d-md-block">
                         <h6 class="text-right"><strong>
-                                <?php foreach ($child_categories as $key => $child_category) {
-                                    echo '<a class="text-dark" href="' . get_category_link($child_category->term_id) . '">' . mb_convert_case($child_category->name, MB_CASE_TITLE, "UTF-8") . ' | ' . ($key == 5 ? '<br>' : '') . '</a>';
+                                <?php foreach (get_submenu_items($parent[2][0], $menu_items) as $key => $child) {
+                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . ($key == 5 ? '<br>' : '') . '</a>';
                                 }
                                 ?>
                                 <!-- Lớp 1 | Lớp 2 | Lớp 3 | Lớp 4 | Lớp 5 | Lớp 6 
                              Lớp 7 | Lớp 8 | Lớp 9 | Lớp 10 | Lớp 11 | Lớp 12  -->
                             </strong></h6>
 
+                    </div>
+                    <div class="d-block d-md-none">
+                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Xem thêm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <?php foreach (get_submenu_items($parent[2][0], $menu_items) as $child) { ?>
+                                <a class="dropdown-item" href="<?php echo $child->url ?>"><?php echo $child->title ?></a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -233,21 +281,26 @@
         <div class="col-md-12">
             <section class="list-news tuyen-sinh">
                 <div class="d-flex justify-content-between align-items-center">
-                    <?php
-                    $parent_category_slug  = 'tuyen-sinh-du-hoc-hoc-bong';
-                    $parent_category = get_term_by('slug', $parent_category_slug, 'category');
-                    $child_categories = get_categories(array('parent' => $parent_category->term_id));
-                    ?>
                     <div>
-                        <h3><strong><a class="text-dark" href="<?php echo get_category_link($parent_category->term_id); ?>"><?php echo chuyenChuHoaThanhThuong($parent_category->name); ?></a></strong></h3>
+                        <h3><strong><a class="text-dark" href="<?php echo $parent[3][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[3][1]); ?></a></strong></h3>
                     </div>
-                    <div>
+                    <div class="d-none d-md-block">
                         <h6><strong>
-                                <?php foreach ($child_categories as $child_category) {
-                                    echo '<a class="text-dark" href="' . get_category_link($child_category->term_id) . '">' . mb_convert_case($child_category->name, MB_CASE_TITLE, "UTF-8") . ' | ' . '</a>';
+                                <?php foreach (get_submenu_items($parent[3][0], $menu_items) as $child) {
+                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . '</a>';
                                 }
                                 ?>
                             </strong></h6>
+                    </div>
+                    <div class="d-block d-md-none">
+                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Xem thêm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <?php foreach (get_submenu_items($parent[3][0], $menu_items) as $child) { ?>
+                                <a class="dropdown-item" href="<?php echo $child->url ?>"><?php echo $child->title ?></a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -302,15 +355,25 @@
                     $child_categories = get_categories(array('parent' => $parent_category->term_id));
                     ?>
                     <div>
-                        <h3><strong><a class="text-dark" href="<?php echo get_category_link($parent_category->term_id); ?>"><?php echo chuyenChuHoaThanhThuong($parent_category->name); ?></a></strong></h3>
+                        <h3><strong><a class="text-dark" href="<?php echo $parent[4][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[4][1]); ?></a></strong></h3>
                     </div>
-                    <div>
+                    <div class="d-none d-md-block">
                         <h6><strong>
-                                <?php foreach ($child_categories as $child_category) {
-                                    echo '<a class="text-dark" href="' . get_category_link($child_category->term_id) . '">' . mb_convert_case($child_category->name, MB_CASE_TITLE, "UTF-8") . ' | ' . '</a>';
+                                <?php foreach (get_submenu_items($parent[4][0], $menu_items) as $child) {
+                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . '</a>';
                                 }
                                 ?>
                             </strong></h6>
+                    </div>
+                    <div class="d-block d-md-none">
+                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Xem thêm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <?php foreach (get_submenu_items($parent[4][0], $menu_items) as $child) { ?>
+                                <a class="dropdown-item" href="<?php echo $child->url ?>"><?php echo $child->title ?></a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -348,7 +411,7 @@
                             <h5><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
                             <div>
                                 <span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span>
-                                <small class="ml-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff ?></small>
+                                <small class="ml-0 ml-lg-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff ?></small>
                                 <div class="content d-none d-md-block"><small><?php the_excerpt(); ?></small></div>
                             </div>
                         </div>
@@ -379,15 +442,25 @@
                     $child_categories = get_categories(array('parent' => $parent_category->term_id));
                     ?>
                     <div>
-                        <h3><strong><a class="text-dark" href="<?php echo get_category_link($parent_category->term_id); ?>"><?php echo chuyenChuHoaThanhThuong($parent_category->name); ?></a></strong></h3>
+                        <h3><strong><a class="text-dark" href="<?php echo $parent[5][2] ?>"><?php echo chuyenChuHoaThanhThuong($parent[5][1]); ?></a></strong></h3>
                     </div>
-                    <div>
+                    <div class="d-none d-md-block">
                         <h6 class="text-right"><strong>
-                                <?php foreach ($child_categories as $key => $child_category) {
-                                    echo '<a class="text-dark" href="' . get_category_link($child_category->term_id) . '">' . mb_convert_case($child_category->name, MB_CASE_TITLE, "UTF-8") . ' | ' . ($key == 5 ? '<br>' : '') . '</a>';
+                                <?php foreach (get_submenu_items($parent[5][0], $menu_items) as $child) {
+                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | '  . '</a>';
                                 }
                                 ?>
                             </strong></h6>
+                    </div>
+                    <div class="d-block d-md-none">
+                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Xem thêm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <?php foreach (get_submenu_items($parent[5][0], $menu_items) as $child) { ?>
+                                <a class="dropdown-item" href="<?php echo $child->url ?>"><?php echo $child->title ?></a>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
                 <hr>

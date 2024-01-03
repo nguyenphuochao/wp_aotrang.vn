@@ -1,14 +1,26 @@
 /* Reset css */
 body {
     font-family: "Roboto", sans-serif
+    
+}
+
+li {
+    list-style: none;
 }
 
 a {
     text-decoration: none !important;
 }
-nav li.active{
+
+::placeholder {
+    color: white;
+    padding: 5px;
+}
+
+nav li.active {
     background-color: #0186eb;
 }
+
 /* contants hr */
 hr {
     height: 5px;
@@ -20,14 +32,16 @@ hr.line {
     border-bottom: dotted;
     opacity: .3;
 }
-hr.line-title{
+
+hr.line-title {
     height: auto;
     background-color: rgb(215, 220, 225);
     margin: 5px 0 5px 0;
 }
+
 hr.footer {
-    height: 0.5px;
-    background-color: rgb(189, 182, 182);
+    height: 0.2px;
+    background-color: rgba(52, 50, 50, 0.3);
 }
 
 /* End contants hr */
@@ -116,7 +130,7 @@ nav .nav-item:hover {
 }
 
 nav form [type=text] {
-    height: 27px !important;
+    height: 27px;
     margin-top: 6px;
     border-radius: 10px;
 }
@@ -132,6 +146,76 @@ nav .dropdown>.dropdown-toggle:active {
     pointer-events: none;
 }
 
+/* Nav mobile */
+.nav-mobile {
+    position: relative;
+    display: none;
+    height: 100px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #FF7200;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 12px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.nav-mobile .social-media {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-mobile .social-media li {
+    margin: 5px;
+    font-size: 30px;
+}
+
+.nav-mobile form#form-search-mobile {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-mobile form#form-search-mobile input[type=text] {
+    width: 575px;
+    height: 27px;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.09);
+}
+
+/* End nav mobile */
 /* End Navigation */
 
 /* List News Component*/
@@ -159,6 +243,10 @@ nav .dropdown>.dropdown-toggle:active {
     mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     color: white;
 
+}
+
+.news-hot .owl-caurosel-news-hot {
+    display: none;
 }
 
 .list-news .bg-primary h4,
@@ -191,7 +279,15 @@ nav .dropdown>.dropdown-toggle:active {
     }
 
     nav {
-        max-height: 50px;
+        max-height: 100px;
+    }
+
+    nav.nav-desktop {
+        display: none;
+    }
+
+    nav.nav-mobile {
+        display: block;
     }
 
     nav a.nav-link {
@@ -205,11 +301,15 @@ nav .dropdown>.dropdown-toggle:active {
         margin-right: -16px;
     }
 
+    .news-hot-main img {
+        height: 420px;
+    }
 }
 
 @media screen and (max-width: 768px) {
-    nav {
-        max-height: 50px;
+
+    .nav-mobile form#form-search-mobile input[type=text] {
+        width: 423px;
     }
 
     .news-hot .news-hot-sub {
@@ -221,11 +321,23 @@ nav .dropdown>.dropdown-toggle:active {
         font-size: 13px;
     }
 
+    .news-hot .owl-caurosel-news-hot {
+        display: block;
+    }
+
+    .news-hot .owl-caurosel-news-hot img {
+        height: 220px;
+    }
+
 }
 
 @media screen and (max-width: 500px) {
     .logo-image img {
         width: 120px;
+    }
+
+    .nav-mobile form#form-search-mobile input[type=text] {
+        width:430px;
     }
 
     .news-hot .col-image img {
@@ -244,9 +356,25 @@ nav .dropdown>.dropdown-toggle:active {
     .list-news .bg-primary .col-image h4 {
         font-size: 13.28px;
     }
-
+    section h3{
+        font-size: 22px;
+    }
     /* Footer */
     footer h5 {
-        font-size: 15px;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 475px) {
+    .nav-mobile form#form-search-mobile input[type=text] {
+        width: 308px;
+    }
+}
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
     }
 }

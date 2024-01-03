@@ -19,7 +19,9 @@ add_theme_support('post-thumbnails');
 // Hàm chuyển tất cả chữ hoa về chữ hoa đầu mỗi từ
 function chuyenChuHoaThanhThuong($name)
 {
-    return mb_convert_case($name, MB_CASE_TITLE, "UTF-8");
+    $text = mb_convert_case($name, MB_CASE_TITLE, "UTF-8");
+    $text_modified = str_replace("&Amp;", "&", $text);
+    return $text_modified;
 }
 
 // Hàm tính views
@@ -65,3 +67,6 @@ function get_post_views($column_name, $id)
     }
 }
 add_action('manage_posts_custom_column', 'get_post_views', 10, 2);
+
+remove_filter('the_content', 'wptexturize');
+remove_filter('the_title', 'wptexturize');
