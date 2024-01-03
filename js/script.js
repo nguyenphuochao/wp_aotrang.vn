@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // Search form
-    $("nav i.fa-magnifying-glass").click(function () {
-        $("nav form").submit();
+    $("nav .fa-magnifying-glass").click(function (e) {
+        $("#form_search").submit();
     });
     $(".detail .content .wp-caption").css('width', '100%');
     // nav mobile

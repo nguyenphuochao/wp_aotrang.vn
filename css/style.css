@@ -1,7 +1,6 @@
 /* Reset css */
 body {
     font-family: "Roboto", sans-serif
-    
 }
 
 li {
@@ -337,7 +336,7 @@ nav .dropdown>.dropdown-toggle:active {
     }
 
     .nav-mobile form#form-search-mobile input[type=text] {
-        width:430px;
+        width: 430px;
     }
 
     .news-hot .col-image img {
@@ -356,19 +355,25 @@ nav .dropdown>.dropdown-toggle:active {
     .list-news .bg-primary .col-image h4 {
         font-size: 13.28px;
     }
-    section h3{
+
+    section h3 {
         font-size: 22px;
     }
+
     /* Footer */
-    footer h5 {
+    footer h5,
+    footer div {
         font-size: 14px;
     }
+
 }
+
 @media screen and (max-width: 475px) {
     .nav-mobile form#form-search-mobile input[type=text] {
         width: 308px;
     }
 }
+
 @media screen and (max-height: 450px) {
     .sidenav {
         padding-top: 15px;

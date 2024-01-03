@@ -1,6 +1,6 @@
 <div class="container">
     <footer class="text-light p-2 mt-2 bg-orange">
-        <div class="pt-3">
+        <div class="pt-1">
             <div class="row">
                 <div class="col-md-8 pt-2">
                     <h5><strong>CÔNG TY CP TRUYỀN THÔNG BRIGHT STAR</strong></h5>

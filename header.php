@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Áo Trắng</title>
+    <!-- <title>Áo Trắng</title> -->
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,6 +24,8 @@
     <!-- Lấy giá trị của url cuối để check dữ liệu -->
     <?php
     $last_segment = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+    // Xử lí trang chủ active cồng kềnh nhất
+    $home = explode(".", $last_segment);
     ?>
     <!-- Logo -->
     <div class="logo-image pl-0 pt-3 pb-3 container">
@@ -66,8 +68,9 @@
                             // echo $slug;
                     ?>
                             <li class="nav-item <?php if ($submenu_items) echo 'dropdown ';
-                                                echo ($slug == $last_segment) ? 'active' : '' ?>
-                                ">
+                                                echo ($slug == $last_segment) ? 'active' : '';
+                                                echo $home[0] == $slug ? ' active' : '';
+                                                ?>">
                                 <a class="nav-link" href="<?php echo $menu_item->url  ?>">
                                     <?php echo $menu_item->title; ?> <?php echo $submenu_items ? '<i class="fa-solid fa-chevron-down"></i>' : '' ?>
                                 </a>
@@ -83,7 +86,7 @@
                     ?>
                     <!-- Form -->
                     <li class="nav-item-form position-relative">
-                        <form class="form-inline" action="<?php bloginfo('url'); ?>" method="GET">
+                        <form id="form_search" class="form-inline" action="<?php echo home_url('/'); ?>" method="GET">
                             <input name="s" class="form-control search w-100" type="text" placeholder="Search" value="<?php echo $_GET['s']; ?>" aria-label="Search">
                             <i class="fa-solid fa-magnifying-glass position-absolute" style="top: 12px;right: 10px"></i>
                         </form>
@@ -91,15 +94,23 @@
                 </ul>
             </div>
         </nav>
+        <!--  -->
         <nav class="nav-mobile">
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <?php foreach ($menu_items as $key => $menu_item) {
                     if ($menu_item->menu_item_parent == 0) {
                         $submenu_items = get_submenu_items($menu_item->ID, $menu_items);
+                        $url_parts = parse_url($menu_item->url);
+                        $slug = pathinfo($url_parts['path'], PATHINFO_FILENAME);
                 ?>
-                        <span style="display: flex;justify-content: space-between;">
-                            <a href="<?php echo $menu_item->url ?>"><?php echo $menu_item->title ?></a> 
+                        <span style="display: flex;justify-content: space-between;border-bottom: 1px solid #c0b6c2;
+                        <?php
+                        echo ($slug == $last_segment ? 'background: #0186eb' : '');
+                        echo ";";
+                        echo ($home[0] == $slug ? 'background: #0186eb' : '');
+                        ?>">
+                            <a href="<?php echo $menu_item->url ?>"><?php echo $menu_item->title ?></a>
                             <a href="#">
                                 <?php if ($submenu_items) { ?>
                                     <i id="dropdown-icon" class="fa-solid fa-angle-down"></i>

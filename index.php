@@ -151,7 +151,7 @@
                         <div class="col-7 col-sm-8 col-md-8 mb-2">
                             <h5><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
                             <div>
-                                <span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo mb_convert_case(get_the_category()[0]->name, MB_CASE_TITLE, "UTF-8"); ?></span>
+                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-xl-5 ml-0"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
                                 <div class="content d-none d-md-block"><small><?php the_excerpt(); ?></small></div>
                             </div>
@@ -239,7 +239,7 @@
                             <a href="<?php the_permalink(); ?>"><img width="100%" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
                             <h4 class="mt-2 mb-3"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
                             <div>
-                                <span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span>
+                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
                                 <div class="mt-4 mb-4 content"><strong><?php the_excerpt(); ?></strong>
                                 </div>
@@ -410,7 +410,7 @@
                         <div class="col-7 col-sm-8 col-md-8 mb-2">
                             <h5><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
                             <div>
-                                <span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span>
+                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-0 ml-lg-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff ?></small>
                                 <div class="content d-none d-md-block"><small><?php the_excerpt(); ?></small></div>
                             </div>
@@ -479,7 +479,7 @@
                             <a href="<?php the_permalink(); ?>"><img width="100%" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
                             <h4 class="mt-2 mb-3"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
                             <div>
-                                <span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span>
+                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
                                 <div class="mt-4 mb-4 content"><strong><?php the_excerpt(); ?></strong>
                                 </div>
