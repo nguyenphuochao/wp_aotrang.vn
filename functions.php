@@ -68,5 +68,34 @@ function get_post_views($column_name, $id)
 }
 add_action('manage_posts_custom_column', 'get_post_views', 10, 2);
 
-remove_filter('the_content', 'wptexturize');
-remove_filter('the_title', 'wptexturize');
+// Code đếm số dòng trong văn bản
+function count_paragraph($insertion, $paragraph_id, $content)
+{
+    $closing_p = '</p>';
+    $paragraphs = explode($closing_p, $content);
+    foreach ($paragraphs as $index => $paragraph) {
+        if (trim($paragraph)) {
+            $paragraphs[$index] .= $closing_p;
+        }
+        if ($paragraph_id == $index + 1) {
+            $paragraphs[$index] .= $insertion;
+        }
+    }
+
+    return implode('', $paragraphs);
+}
+//Chèn bài liên quan vào giữa nội dung
+
+add_filter('the_content', 'prefix_insert_post_ads');
+
+function prefix_insert_post_ads($content)
+{
+
+    $related_posts = "<div class='meta-related'>" . do_shortcode('[related_posts_by_tax title=""]') . "</div>";
+
+    if (is_single()) {
+        return count_paragraph($related_posts, 1, $content);
+    }
+
+    return $content;
+}

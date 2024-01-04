@@ -18,12 +18,18 @@
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/detail.css">
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/category.css">
     <?php wp_head(); ?>
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2769146024033953" crossorigin="anonymous"></script>
+    <ins class="adsbygoogle testad" style="display:block" data-ad-client="ca-pub-2769146024033953" data-ad-slot="4681131052" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script> -->
 </head>
 
 <body>
     <!-- Lấy giá trị của url cuối để check dữ liệu -->
     <?php
     $last_segment = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+    //echo $last_segment;
     // Xử lí trang chủ active cồng kềnh nhất
     $home = explode(".", $last_segment);
     ?>
@@ -65,7 +71,7 @@
                             // Lấy tên slug
                             $url_parts = parse_url($menu_item->url);
                             $slug = pathinfo($url_parts['path'], PATHINFO_FILENAME);
-                            // echo $slug;
+                            //echo $slug;
                     ?>
                             <li class="nav-item <?php if ($submenu_items) echo 'dropdown ';
                                                 echo ($slug == $last_segment) ? 'active' : '';
@@ -76,7 +82,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <?php foreach ($submenu_items as $submenu_item) { ?>
-                                        <a class="dropdown-item" href="<?php echo $submenu_item->url  ?>"><?php echo $submenu_item->title ?></a>
+                                        <a style="border-bottom: 1px solid #c2bbbb;" class="dropdown-item" href="<?php echo $submenu_item->url  ?>"><?php echo $submenu_item->title ?></a>
                                     <?php } ?>
                                 </div>
                             </li>
