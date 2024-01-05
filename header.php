@@ -39,7 +39,7 @@
     </div>
     <!-- End Logo -->
     <!-- Navigation -->
-    <div class="container" style="position: sticky;top: 0;z-index: 999;">
+    <div class="container" style="position: sticky;top: 0;z-index: 100000;">
         <nav class="navbar navbar-expand-lg navbar-light nav-desktop bg-orange">
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -80,9 +80,9 @@
                                 <a class="nav-link" href="<?php echo $menu_item->url  ?>">
                                     <?php echo $menu_item->title; ?> <?php echo $submenu_items ? '<i class="fa-solid fa-chevron-down"></i>' : '' ?>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <?php foreach ($submenu_items as $submenu_item) { ?>
-                                        <a style="border-bottom: 1px solid #c2bbbb;" class="dropdown-item" href="<?php echo $submenu_item->url  ?>"><?php echo $submenu_item->title ?></a>
+                                <div class="dropdown-menu" id="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <?php foreach ($submenu_items as $key => $submenu_item) { ?>
+                                        <a style="border-bottom: <?php echo count($submenu_items) - 1 != $key ? '1px' : '0px' ?> solid #c2bbbb;" class="dropdown-item" href="<?php echo $submenu_item->url  ?>"><?php echo $submenu_item->title ?></a>
                                     <?php } ?>
                                 </div>
                             </li>
@@ -93,7 +93,7 @@
                     <!-- Form -->
                     <li class="nav-item-form position-relative">
                         <form id="form_search" class="form-inline" action="<?php echo home_url('/'); ?>" method="GET">
-                            <input name="s" class="form-control search w-100" type="text" placeholder="Search" value="<?php echo $_GET['s']; ?>" aria-label="Search">
+                            <input name="s" class="form-control search w-100" type="text" placeholder="Search" value="<?php echo $_GET['s'] ?? '' ?>" aria-label="Search">
                             <i class="fa-solid fa-magnifying-glass position-absolute" style="top: 12px;right: 10px"></i>
                         </form>
                     </li>
@@ -141,7 +141,7 @@
                 <li><a href="https://www.tiktok.com/@phimtruyen.vn?_d=secCgYIASAHKAESPgo8wQ%2FPGa4DFb11bYa%2FqEdnNFTquKnIhvaJBO2cQeyZPYTlpEqa0ba1cju7bB%2F8AFZaz7%2F0NMr8iM01VoltGgA%3D&object_id=7108639433553331202&page_open_method=scan_code&schema_type=4&sec_uid=MS4wLjABAAAAUquFsxKv-JNpRTvKcsArLULpf4_9Rw_ZpIue-uKjC2IUrbKNRyqHAT7NErA0ch9L&share_app_id=1180&share_author_id=7108639433553331202&share_uid=7108639433553331202&tt_from=scan_code&utm_campaign=client_scan_code&utm_medium=1&utm_source=scan_code&_r=1"><i style="color: white" class="fa-brands fa-tiktok"></i></a></li>
             </ul>
             <form method="GET" action="<?php bloginfo('url'); ?>" id="form-search-mobile">
-                <input type="text" name="s" placeholder="Tìm kiếm" value="<?php echo $_GET['s']; ?>">
+                <input type="text" name="s" placeholder="Tìm kiếm" value="<?php echo $_GET['s'] ?? ''; ?>">
             </form>
         </nav>
     </div>

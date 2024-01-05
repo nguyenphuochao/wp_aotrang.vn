@@ -10,7 +10,7 @@
             $parent[] = [$menu_item->ID, $menu_item->title, $menu_item->url];
         }
     }
-    //var_dump($parent);
+    // var_dump($parent);
 
     ?>
     <!-- News Hot -->
@@ -25,12 +25,13 @@
                 <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
                 <div class="col-md-7 news-hot-main">
                     <div class="col-image">
-                        <a href="<?php the_permalink(); ?>"><img width="100%" style="background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+                        <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" style="background: linear-gradient(to top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1));
                         -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-                        mask-image: linear-gradient(to bottom, black 50%, transparent 100%);" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                        mask-image: linear-gradient(to bottom, black 20%, transparent 100%);" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
                         <div class="content-hot">
                             <h3 class="mt-2 font-weight-bold"><a class="text-brown" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                            <p><?php the_excerpt(); ?></p>
+                            <?php $content = get_the_content(); ?>
+                            <p><?php echo wp_trim_words($content,25); ?></p>
                         </div>
                     </div>
                 </div>
@@ -48,9 +49,10 @@
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                         <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
                         <div class="col-image col-md-6 mb-1 <?php echo $index % 2 == 0 ? 'pr-1' : 'pl-0'; ?>">
-                            <a href="<?php the_permalink(); ?>"><img width="100%" height="205" src="<?php echo $featured_img_url; ?>" alt="<?php the_title() ?>"></a>
+                            <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="205" src="<?php echo $featured_img_url; ?>" alt="<?php the_title() ?>"></a>
                             <div class="content-hot-sub text-light">
-                                <h6><strong><a class="text-light" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
+                                <?php $title = get_the_title(); ?>
+                                <h6 style="font-size: 13px;"><strong><a class="text-light" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
                                 <div><small><?php echo  get_the_time('d/m/Y') ?> <i class="fa-solid fa-eye"></i> <?php echo getPostViews(get_the_ID()); ?></small></div>
                             </div>
                         </div>
@@ -70,7 +72,7 @@
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                         <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
-                        <div class="item"><a href="<?php the_permalink(); ?>"><img width="100%" height="180" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
+                        <div class="item"><a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="180" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
                             <a href="<?php the_permalink(); ?>" class="text-dark">
                                 <h6 class="mt-1"><strong><?php the_title(); ?></strong></h6>
                             </a>
@@ -123,7 +125,7 @@
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                         <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
-                        <div class="item"><a href="<?php the_permalink(); ?>"><img width="100%" height="160" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
+                        <div class="item"><a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="160" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
                             <a href="<?php the_permalink(); ?>" class="text-dark">
                                 <h6 class="mt-1"><strong><?php the_title(); ?></strong></h6>
                             </a>
@@ -146,7 +148,7 @@
                         $time_diff = human_time_diff($post_time, current_time('U')) . ' trước';
                         ?>
                         <div class="col-5 col-sm-4 col-md-4 mb-2">
-                            <a href="<?php the_permalink(); ?>"><img width="100%" class="img-fluid" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                            <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" class="img-fluid" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
                         </div>
                         <div class="col-7 col-sm-8 col-md-8 mb-2">
                             <h5><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
@@ -236,13 +238,12 @@
                         $time_diff = human_time_diff($post_time, current_time('U')) . ' trước';
                         ?>
                         <div class="col-md-6">
-                            <a href="<?php the_permalink(); ?>"><img width="100%" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
+                            <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
                             <h4 class="mt-2 mb-3"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
                             <div>
                                 <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
-                                <div class="mt-4 mb-4 content"><strong><?php the_excerpt(); ?></strong>
-                                </div>
+                                <div class="mt-4 mb-4 content"><?php the_excerpt(); ?></div>
                             </div>
                         </div>
                     <?php endwhile;
@@ -258,7 +259,7 @@
                             <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                                 <?php $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); ?>
                                 <div class="col-5 col-sm-4 col-md-6 mb-2">
-                                    <a href="<?php the_permalink(); ?>"><img width="100%" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                                    <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
                                 </div>
                                 <div class="col-7 col-sm-8 col-md-6 mb-2">
                                     <h6><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
@@ -315,8 +316,8 @@
                             <?php $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); ?>
                             <div class="col-md-7">
                                 <div class="col-image">
-                                    <a href="<?php the_permalink(); ?>"><img width="100%" height="382" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
-                                    <h4><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
+                                    <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="382" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                                    <h4><strong><a class="text-primary" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
                                 </div>
                             </div>
                         <?php endwhile;
@@ -330,8 +331,8 @@
                             <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                                 <?php $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); ?>
                                 <div class="mt-1 mb-1 col-image">
-                                    <a href="<?php the_permalink(); ?>"><img width="100%" height="190" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
-                                    <h5><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
+                                    <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="190" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                                    <h5><strong><a class="text-primary" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
                                 </div>
                             <?php endwhile;
                             wp_reset_postdata(); ?>
@@ -385,7 +386,7 @@
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                         <?php $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); ?>
-                        <div class="item"><a href="<?php the_permalink(); ?>"><img width="100%" height="160" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                        <div class="item"><a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="160" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
                             <h6 class="mt-1"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
                         </div>
                     <?php endwhile;
@@ -405,7 +406,7 @@
                         $time_diff = human_time_diff($post_time, current_time('U')) . ' trước';
                         ?>
                         <div class="col-5 col-sm-4 col-md-4 mb-2">
-                            <a href="<?php the_permalink(); ?>"><img width="100%" class="img-fluid" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                            <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" class="img-fluid" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
                         </div>
                         <div class="col-7 col-sm-8 col-md-8 mb-2">
                             <h5><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
@@ -452,6 +453,19 @@
                                 ?>
                             </strong></h6>
                     </div>
+
+                    <?php if (count(get_submenu_items($parent[5][0], $menu_items)) > 0) : ?>
+                        <div class="d-block d-md-none mb-2">
+                            <a style="background: #FF7200;padding: 1px 3px 1px 3px;border-radius: 30px" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Xem thêm
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <?php foreach (get_submenu_items($parent[5][0], $menu_items) as $child) { ?>
+                                    <a class="dropdown-item" href="<?php echo $child->url ?>"><?php echo $child->title ?></a>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    <?php endif ?>
                 </div>
                 <hr>
                 <div class="row">
@@ -466,13 +480,12 @@
                         $time_diff = human_time_diff($post_time, current_time('U')) . ' trước';
                         ?>
                         <div class="col-md-6">
-                            <a href="<?php the_permalink(); ?>"><img width="100%" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
+                            <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
                             <h4 class="mt-2 mb-3"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
                             <div>
                                 <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
-                                <div class="mt-4 mb-4 content"><strong><?php the_excerpt(); ?></strong>
-                                </div>
+                                <div class="mt-4 mb-4 content"><?php the_excerpt(); ?></div>
                             </div>
                         </div>
                     <?php endwhile;
@@ -488,7 +501,7 @@
                             <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
                                 <?php $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); ?>
                                 <div class="col-5 col-sm-4 col-md-6 mb-2">
-                                    <a href="<?php the_permalink(); ?>"><img width="100%" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                                    <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
                                 </div>
                                 <div class="col-7 col-sm-8 col-md-6 mb-2">
                                     <h6><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>

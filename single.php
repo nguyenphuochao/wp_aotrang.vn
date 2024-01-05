@@ -42,7 +42,7 @@
             <?php get_sidebar(); ?>
         </div>
     </div>
-
+    <!-- Bài viết liên quan -->
     <div class="related-articles mt-3">
         <?php
         $categories = get_the_category($post->ID);
@@ -53,7 +53,7 @@
             $args = array(
                 'category__in' => $category_ids,
                 'post__not_in' => array($post->ID),
-                'showposts' => 4, // Số bài viết bạn muốn hiển thị.
+                'showposts' => 10, // Số bài viết bạn muốn hiển thị.
                 'caller_get_posts' => 1
             );
             $my_query = new wp_query($args);
@@ -63,9 +63,17 @@
                 while ($my_query->have_posts()) {
                     $my_query->the_post();
         ?>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('medium'); ?></a>
                         <h4 class="mt-2"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
+                    </div> -->
+
+                    <div class="col-md-3 mb-2">
+                        <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('medium'); ?></a>
+                    </div>
+                    <div class="col-md-9 mb-2">
+                        <h6><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
+                        <div class="content"><?php the_excerpt(); ?></div>
                     </div>
         <?php
                 }
@@ -77,7 +85,7 @@
     <div class="comment-fb mt-2">
         <div class="fb-comments" data-href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-width="100%" data-numposts="5"></div>
     </div>
-    
+
 </div>
 
 <?php get_footer(); ?>
