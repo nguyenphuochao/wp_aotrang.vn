@@ -102,8 +102,8 @@
                                 ?>
                             </strong></h6>
                     </div>
-                    <div class="d-block d-md-none">
-                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-block d-md-none mb-2">
+                        <a style="background: #FF7200;padding: 1px 3px 1px 3px;border-radius: 30px" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Xem thêm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -153,7 +153,7 @@
                             <div>
                                 <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-xl-5 ml-0"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
-                                <div class="content d-none d-md-block"><small><?php the_excerpt(); ?></small></div>
+                                <div class="content d-none d-md-block mt-2"><small><?php the_excerpt(); ?></small></div>
                             </div>
                         </div>
                     <?php endwhile;
@@ -212,8 +212,8 @@
                             </strong></h6>
 
                     </div>
-                    <div class="d-block d-md-none">
-                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-block d-md-none mb-2">
+                        <a style="background: #FF7200;padding: 1px 3px 1px 3px;border-radius: 30px" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Xem thêm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -292,8 +292,8 @@
                                 ?>
                             </strong></h6>
                     </div>
-                    <div class="d-block d-md-none">
-                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-block d-md-none mb-2">
+                        <a style="background: #FF7200;padding: 1px 3px 1px 3px;border-radius: 30px" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Xem thêm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -365,8 +365,8 @@
                                 ?>
                             </strong></h6>
                     </div>
-                    <div class="d-block d-md-none">
-                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-block d-md-none mb-2">
+                        <a style="background: #FF7200;padding: 1px 3px 1px 3px;border-radius: 30px" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Xem thêm
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -412,7 +412,7 @@
                             <div>
                                 <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-0 ml-lg-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff ?></small>
-                                <div class="content d-none d-md-block"><small><?php the_excerpt(); ?></small></div>
+                                <div class="content d-none d-md-block mt-2"><small><?php the_excerpt(); ?></small></div>
                             </div>
                         </div>
                     <?php endwhile;
@@ -451,16 +451,6 @@
                                 }
                                 ?>
                             </strong></h6>
-                    </div>
-                    <div class="d-block d-md-none">
-                        <a style="background: #FF7200;" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Xem thêm
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <?php foreach (get_submenu_items($parent[5][0], $menu_items) as $child) { ?>
-                                <a class="dropdown-item" href="<?php echo $child->url ?>"><?php echo $child->title ?></a>
-                            <?php } ?>
-                        </div>
                     </div>
                 </div>
                 <hr>
