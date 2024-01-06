@@ -249,7 +249,7 @@ nav .dropdown>.dropdown-toggle:active {
     padding: 5px;
     font-weight: bold;
     border-radius: 10px;
-    height: 140px;
+    height: auto;
 }
 
 .news-hot .content-hot-sub {
@@ -293,7 +293,6 @@ nav .dropdown>.dropdown-toggle:active {
 
     .news-hot .content-hot::before {
         left: 256px;
-        height: auto;
     }
 }
 

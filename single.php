@@ -53,7 +53,7 @@
             $args = array(
                 'category__in' => $category_ids,
                 'post__not_in' => array($post->ID),
-                'showposts' => 10, // Số bài viết bạn muốn hiển thị.
+                'showposts' => 12, // Số bài viết bạn muốn hiển thị.
                 'caller_get_posts' => 1
             );
             $my_query = new wp_query($args);
