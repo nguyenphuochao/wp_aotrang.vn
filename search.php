@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 <div class="container category">
-    <h2 class="mt-4">Kết quả tìm: <span class="text-orange font-weight-bold"><?php echo $_GET['s'] ?></span> </h2>
+    <h3 class="mt-4">Kết quả tìm: <span class="text-orange font-weight-bold"><?php echo $_GET['s'] ?></span> </h3>
     <div class="row mt-3">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <!-- Section 1 -->
             <div class="row">
                 <!-- Get post mặt định -->
@@ -85,8 +85,8 @@
             <?php } ?>
             <!-- End Pagination -->
         </div>
-        <div class="col-md-2">
-            <h6><strong>ĐƯỢC XEM NHIỀU</strong></h6>
+        <div class="col-md-3">
+            <h6><strong>TIN MỚI NHẤT</strong></h6>
             <?php get_sidebar(); ?>
         </div>
     </div>

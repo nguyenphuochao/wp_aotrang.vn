@@ -17,17 +17,21 @@ a {
 }
 
 nav li.active {
-    background-color: #0186eb;
+    border: 1px solid #ee8010;
+    border-radius: 15px;
+
 }
 
 /* contants hr */
 hr {
     height: 5px;
     background-color: grey;
+    margin-top: 0px;
 }
 
 hr.line {
-    height: 1px;
+    margin-top: 10px;
+    height: 3px;
     border-bottom: dotted;
     opacity: .3;
 }
@@ -41,6 +45,8 @@ hr.line-title {
 hr.footer {
     height: 0.2px;
     background-color: rgba(52, 50, 50, 0.3);
+    margin-top: 18px;
+    margin-bottom: 7px;
 }
 
 /* End contants hr */
@@ -60,7 +66,7 @@ hr.footer {
 
 /* Root color */
 .bg-orange {
-    background-color: #FF7200;
+    background-color: #ee8010;
 }
 
 .text-orange {
@@ -110,26 +116,45 @@ nav i.fa-magnifying-glass {
     cursor: pointer;
 }
 
-nav .nav-item.active {
-    background-color: #0186eb;
-}
+
+
 
 /* End fontawesome */
 
 /* Navigation */
 nav {
-    max-height: 38px;
-    background-color: #FF7200;
+    max-height: 40px;
+}
+
+nav.nav-desktop {
+    border-radius: 5px;
+    border: 1px solid #ee8010;
+    background-color: white;
+}
+
+nav .nav-item.active {
+    border: 1px solid #ee8010;
+    border-radius: 15px;
+}
+
+nav .nav-item.active a.nav-link {
+    color: #ee8010 !important;
 }
 
 nav .nav-item .nav-link {
-    color: white !important;
+    color: rgb(70, 67, 67) !important;
     font-weight: bold;
     text-transform: uppercase;
+    padding: 5px;
 }
 
 nav .nav-item:hover {
-    background-color: #0186eb;
+    border: 1px solid #ee8010;
+    border-radius: 15px;
+}
+
+nav .nav-item:hover a.nav-link {
+    color: #ee8010 !important;
 }
 
 nav form [type=text] {
@@ -240,7 +265,7 @@ nav .dropdown>.dropdown-toggle:active {
 .news-hot .content-hot::before {
     content: '';
     position: absolute;
-    top: -13px;
+    top: -10px;
     width: 101%;
     left: 305px;
     bottom: 20px;
@@ -249,7 +274,7 @@ nav .dropdown>.dropdown-toggle:active {
     padding: 5px;
     font-weight: bold;
     border-radius: 10px;
-    height: auto;
+    height: 140px;
 }
 
 .news-hot .content-hot-sub {
@@ -268,15 +293,32 @@ nav .dropdown>.dropdown-toggle:active {
     display: none;
 }
 
-.list-news .bg-primary h4,
-.list-news .bg-primary h5 {
+.list-news .bg-orange h4,
+.list-news .bg-orange h5 {
     position: absolute;
     bottom: -10px;
     padding: 20px;
-    color: #130f6d;
+    color: black;
     background: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1));
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     mask-image: linear-gradient(to top, black 80%, transparent 100%)
+}
+
+.list-news h6 {
+    font-size: 15px;
+}
+
+.list-news .category_name_button {
+    font-size: 13px;
+    padding: 2px 8px;
+    border: 2px solid #FF7200;
+    background-color: #ee8010;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer .bottom-footer {
+    padding-left: 33px;
 }
 
 /* End List News Component */
@@ -293,6 +335,7 @@ nav .dropdown>.dropdown-toggle:active {
 
     .news-hot .content-hot::before {
         left: 256px;
+        height: auto;
     }
 }
 
@@ -330,6 +373,10 @@ nav .dropdown>.dropdown-toggle:active {
 
     .news-hot .content-hot::before {
         left: 189px;
+    }
+
+    footer .bottom-footer {
+        padding-left: 0px;
     }
 }
 

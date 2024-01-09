@@ -5,15 +5,21 @@
             <!-- Section 1 -->
             <div class="row">
                 <!-- Get post mặt định -->
-                <?php $i = 0; ?>
+                <?php
+                $i = 0;
+                ?>
                 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) : the_post(); ?>
+                        <?php
+                        $title = get_the_title();
+                        $content = get_the_content();
+                        ?>
                         <?php if ($i < 2) { ?>
                             <div class="col-md-6">
                                 <div class="image-thumnail-1"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail() ?></a></div>
                                 <h6 class="mt-2"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
-                                <div class="content">
-                                    <?php the_excerpt(); ?>
+                                <div class="content <?php echo str_word_count($title) <= 20 ? 'pt-3' : '' ?>">
+                                    <?php echo wp_trim_words($content, 30); ?>
                                 </div>
                             </div>
                         <?php } ?>
@@ -48,7 +54,7 @@
                 <?php $i = 0; ?>
                 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) : the_post(); ?>
-                        <?php if ($i > 4 && $i < 30) : ?>
+                        <?php if ($i > 4 && $i < 40) : ?>
                             <div class="col-md-4 mb-2">
                                 <div class="image-thumnail-3"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail() ?></a></div>
                             </div>
@@ -65,7 +71,7 @@
             <!-- End Section 3 -->
             <!-- Pagination -->
             <?php if (paginate_links() != '') { ?>
-                <div class="quatrang">
+                <div class="quatrang mt-5 text-center">
                     <?php
                     global $wp_query;
                     $big = 999999999;
@@ -83,8 +89,8 @@
             <!-- End Pagination -->
         </div>
         <div class="col-md-3">
-        <h6><strong>TIN MỚI NHẤT</strong></h6>
-                <?php get_sidebar(); ?>
+            <h6><strong>TIN MỚI NHẤT</strong></h6>
+            <?php get_sidebar(); ?>
         </div>
     </div>
 </div>

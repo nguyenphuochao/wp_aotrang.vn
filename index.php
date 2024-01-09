@@ -31,7 +31,7 @@
                         <div class="content-hot">
                             <h3 class="mt-2 font-weight-bold"><a class="text-brown" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                             <?php $content = get_the_content(); ?>
-                            <p><?php echo wp_trim_words($content,25); ?></p>
+                            <p><?php echo wp_trim_words($content, 25); ?></p>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                         <?php $featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
                         <div class="col-image col-md-6 mb-1 <?php echo $index % 2 == 0 ? 'pr-1' : 'pl-0'; ?>">
                             <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="205" src="<?php echo $featured_img_url; ?>" alt="<?php the_title() ?>"></a>
-                            <div class="content-hot-sub text-light">
+                            <div class="content-hot-sub text-light pl-3">
                                 <?php $title = get_the_title(); ?>
                                 <h6 style="font-size: 13px;"><strong><a class="text-light" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
                                 <div><small><?php echo  get_the_time('d/m/Y') ?> <i class="fa-solid fa-eye"></i> <?php echo getPostViews(get_the_ID()); ?></small></div>
@@ -95,14 +95,14 @@
                     <div>
                         <h3><strong><a class="text-dark" href="<?php echo $parent[1][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[1][1]); ?></a></strong></h3>
                     </div>
-                    <div class="d-none d-md-block">
-                        <h6><strong>
-                                <?php foreach (get_submenu_items($parent[1][0], $menu_items) as $child) {
-                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . '</a>';
-                                }
-                                // Trường tôi | Nhỏ to tâm sự | Cảnh giác 247 | Sách hay
-                                ?>
-                            </strong></h6>
+                    <div class="d-none d-md-block mt-lg-2">
+                        <h6>
+                            <?php foreach (get_submenu_items($parent[1][0], $menu_items) as $child) {
+                                echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . '</a>';
+                            }
+                            // Trường tôi | Nhỏ to tâm sự | Cảnh giác 247 | Sách hay
+                            ?>
+                        </h6>
                     </div>
                     <div class="d-block d-md-none mb-2">
                         <a style="background: #FF7200;padding: 1px 3px 1px 3px;border-radius: 30px" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -153,7 +153,7 @@
                         <div class="col-7 col-sm-8 col-md-8 mb-2">
                             <h5><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
                             <div>
-                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
+                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="category_name_button text-dark"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-xl-5 ml-0"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
                                 <div class="content d-none d-md-block mt-2"><small><?php the_excerpt(); ?></small></div>
                             </div>
@@ -203,15 +203,15 @@
                     <div>
                         <h3><strong><a class="text-dark" href="<?php echo $parent[2][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[2][1]); ?></a></strong></h3>
                     </div>
-                    <div class="d-none d-md-block">
-                        <h6 class="text-right"><strong>
-                                <?php foreach (get_submenu_items($parent[2][0], $menu_items) as $key => $child) {
-                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . ($key == 5 ? '<br>' : '') . '</a>';
-                                }
-                                ?>
-                                <!-- Lớp 1 | Lớp 2 | Lớp 3 | Lớp 4 | Lớp 5 | Lớp 6 
+                    <div class="d-none d-md-block mt-lg-2">
+                        <h6 class="text-right">
+                            <?php foreach (get_submenu_items($parent[2][0], $menu_items) as $key => $child) {
+                                echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | '  . '</a>';
+                            }
+                            ?>
+                            <!-- Lớp 1 | Lớp 2 | Lớp 3 | Lớp 4 | Lớp 5 | Lớp 6 
                              Lớp 7 | Lớp 8 | Lớp 9 | Lớp 10 | Lớp 11 | Lớp 12  -->
-                            </strong></h6>
+                        </h6>
 
                     </div>
                     <div class="d-block d-md-none mb-2">
@@ -241,7 +241,7 @@
                             <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
                             <h4 class="mt-2 mb-3"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
                             <div>
-                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
+                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="category_name_button text-dark"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
                                 <div class="mt-4 mb-4 content"><?php the_excerpt(); ?></div>
                             </div>
@@ -257,12 +257,18 @@
                             <?php global $wp_query;
                             $wp_query->in_the_loop = true; ?>
                             <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
-                                <?php $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); ?>
+                                <?php
+                                $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full');
+                                $post_time = get_post_time('U', false, $post);
+                                $time_diff = human_time_diff($post_time, current_time('U')) . ' trước';
+                                ?>
                                 <div class="col-5 col-sm-4 col-md-6 mb-2">
                                     <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
                                 </div>
                                 <div class="col-7 col-sm-8 col-md-6 mb-2">
                                     <h6><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h6>
+                                    <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="category_name_button text-dark"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
+                                    <small class="ml-lg-2"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
                                 </div>
                             <?php endwhile;
                             wp_reset_postdata(); ?>
@@ -285,13 +291,13 @@
                     <div>
                         <h3><strong><a class="text-dark" href="<?php echo $parent[3][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[3][1]); ?></a></strong></h3>
                     </div>
-                    <div class="d-none d-md-block">
-                        <h6><strong>
-                                <?php foreach (get_submenu_items($parent[3][0], $menu_items) as $child) {
-                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . '</a>';
-                                }
-                                ?>
-                            </strong></h6>
+                    <div class="d-none d-md-block mt-lg-2">
+                        <h6>
+                            <?php foreach (get_submenu_items($parent[3][0], $menu_items) as $child) {
+                                echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . '</a>';
+                            }
+                            ?>
+                        </h6>
                     </div>
                     <div class="d-block d-md-none mb-2">
                         <a style="background: #FF7200;padding: 1px 3px 1px 3px;border-radius: 30px" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -305,7 +311,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="bg-primary p-5">
+                <div class="bg-orange p-5">
                     <div class="row">
                         <!-- Get post News Query -->
                         <?php $getposts = new WP_query();
@@ -317,7 +323,7 @@
                             <div class="col-md-7">
                                 <div class="col-image">
                                     <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="382" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
-                                    <h4><strong><a class="text-primary" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
+                                    <h4><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
                                 </div>
                             </div>
                         <?php endwhile;
@@ -332,7 +338,7 @@
                                 <?php $featured_img_url = get_the_post_thumbnail_url($post->ID, 'full'); ?>
                                 <div class="mt-1 mb-1 col-image">
                                     <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="190" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
-                                    <h5><strong><a class="text-primary" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
+                                    <h5><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
                                 </div>
                             <?php endwhile;
                             wp_reset_postdata(); ?>
@@ -358,13 +364,13 @@
                     <div>
                         <h3><strong><a class="text-dark" href="<?php echo $parent[4][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[4][1]); ?></a></strong></h3>
                     </div>
-                    <div class="d-none d-md-block">
-                        <h6><strong>
-                                <?php foreach (get_submenu_items($parent[4][0], $menu_items) as $child) {
-                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . '</a>';
-                                }
-                                ?>
-                            </strong></h6>
+                    <div class="d-none d-md-block mt-lg-2">
+                        <h6>
+                            <?php foreach (get_submenu_items($parent[4][0], $menu_items) as $child) {
+                                echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | ' . '</a>';
+                            }
+                            ?>
+                        </h6>
                     </div>
                     <div class="d-block d-md-none mb-2">
                         <a style="background: #FF7200;padding: 1px 3px 1px 3px;border-radius: 30px" class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -411,7 +417,7 @@
                         <div class="col-7 col-sm-8 col-md-8 mb-2">
                             <h5><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h5>
                             <div>
-                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
+                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="category_name_button text-dark"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-0 ml-lg-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff ?></small>
                                 <div class="content d-none d-md-block mt-2"><small><?php the_excerpt(); ?></small></div>
                             </div>
@@ -445,13 +451,13 @@
                     <div>
                         <h3><strong><a class="text-dark" href="<?php echo $parent[5][2] ?>"><?php echo chuyenChuHoaThanhThuong($parent[5][1]); ?></a></strong></h3>
                     </div>
-                    <div class="d-none d-md-block">
-                        <h6 class="text-right"><strong>
-                                <?php foreach (get_submenu_items($parent[5][0], $menu_items) as $child) {
-                                    echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | '  . '</a>';
-                                }
-                                ?>
-                            </strong></h6>
+                    <div class="d-none d-md-block mt-lg-2">
+                        <h6 class="text-right">
+                            <?php foreach (get_submenu_items($parent[5][0], $menu_items) as $child) {
+                                echo '<a class="text-dark" href="' . $child->url . '">' . chuyenChuHoaThanhThuong($child->title) . ' | '  . '</a>';
+                            }
+                            ?>
+                        </h6>
                     </div>
 
                     <?php if (count(get_submenu_items($parent[5][0], $menu_items)) > 0) : ?>
@@ -483,7 +489,7 @@
                             <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" src="<?php echo $featured_img_url ?>" alt="<?php the_title(); ?>"></a>
                             <h4 class="mt-2 mb-3"><strong><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong></h4>
                             <div>
-                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="bg-primary text-light pl-3 pr-3 font-weight-bold" style="border-radius: 10px;"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
+                                <a href="<?php echo get_category_link(get_the_category()[0]->term_id) ?>"><span class="category_name_button text-dark"><?php echo chuyenChuHoaThanhThuong(get_the_category()[0]->name); ?></span></a>
                                 <small class="ml-5"><i class="fa-solid fa-clock"></i> <?php echo $time_diff; ?></small>
                                 <div class="mt-4 mb-4 content"><?php the_excerpt(); ?></div>
                             </div>

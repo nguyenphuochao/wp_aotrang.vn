@@ -40,7 +40,7 @@
     <!-- End Logo -->
     <!-- Navigation -->
     <div class="container" style="position: sticky;top: 0;z-index: 100000;">
-        <nav class="navbar navbar-expand-lg navbar-light nav-desktop bg-orange">
+        <nav class="navbar navbar-expand-lg navbar-light nav-desktop">
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -75,7 +75,6 @@
                     ?>
                             <li class="nav-item <?php if ($submenu_items) echo 'dropdown ';
                                                 echo ($slug == $last_segment) ? 'active' : '';
-                                                echo $home[0] == $slug ? ' active' : '';
                                                 ?>">
                                 <a class="nav-link" href="<?php echo $menu_item->url  ?>">
                                     <?php echo $menu_item->title; ?> <?php echo $submenu_items ? '<i class="fa-solid fa-chevron-down"></i>' : '' ?>
@@ -93,7 +92,7 @@
                     <!-- Form -->
                     <li class="nav-item-form position-relative">
                         <form id="form_search" class="form-inline" action="<?php echo home_url('/'); ?>" method="GET">
-                            <input name="s" class="form-control search w-100" type="text" placeholder="Search" value="<?php echo $_GET['s'] ?? '' ?>" aria-label="Search">
+                            <input name="s" class="form-control search w-100" type="text" placeholder="Tìm kiếm" value="<?php echo $_GET['s'] ?? '' ?>" aria-label="Search">
                             <i class="fa-solid fa-magnifying-glass position-absolute" style="top: 12px;right: 10px"></i>
                         </form>
                     </li>
@@ -101,7 +100,7 @@
             </div>
         </nav>
         <!--  -->
-        <nav class="nav-mobile">
+        <nav class="nav-mobile bg-orange">
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <?php foreach ($menu_items as $key => $menu_item) {
