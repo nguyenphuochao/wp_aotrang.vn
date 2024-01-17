@@ -392,7 +392,9 @@ footer .bottom-footer a {
     .news-hot-main img {
         height: 420px;
     }
-
+    .news-hot .news-hot-main img{
+        mask-image: linear-gradient(to bottom, black 0%, transparent 100%) !important;
+    }
     .news-hot .content-hot::before {
         left: 189px;
     }
