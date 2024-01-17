@@ -3,7 +3,6 @@ body {
     font-family: "Roboto", sans-serif
 }
 
-
 a {
     text-decoration: none !important;
 }
@@ -318,9 +317,9 @@ nav .dropdown>.dropdown-toggle:active {
     bottom: -10px;
     padding: 20px;
     color: black;
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1));
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9));
     -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-    mask-image: linear-gradient(to top, black 80%, transparent 100%)
+    mask-image: linear-gradient(to top, black 70%, transparent 100%)
 }
 
 .list-news h6 {
@@ -392,9 +391,11 @@ footer .bottom-footer a {
     .news-hot-main img {
         height: 420px;
     }
-    .news-hot .news-hot-main img{
+
+    .news-hot .news-hot-main img {
         mask-image: linear-gradient(to bottom, black 0%, transparent 100%) !important;
     }
+
     .news-hot .content-hot::before {
         left: 189px;
     }

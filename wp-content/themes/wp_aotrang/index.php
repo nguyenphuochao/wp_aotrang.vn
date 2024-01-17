@@ -29,7 +29,7 @@
                     <div class="col-image">
                         <a href="<?php the_permalink(); ?>"><img loading="lazy" width="100%" height="418px" style="background: linear-gradient(to top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 1));
                         -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-                        mask-image: linear-gradient(to bottom, black 30%, transparent 100%);" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
+                        mask-image: linear-gradient(to bottom, black 50%, transparent 100%);" src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"></a>
                         <div class="content-hot">
                             <h1 class="mt-2 font-weight-bold"><a class="text-brown" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                             <?php $content = get_the_content(); ?>
