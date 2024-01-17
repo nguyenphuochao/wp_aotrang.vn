@@ -286,7 +286,7 @@ nav .dropdown>.dropdown-toggle:active {
     pointer-events: none;
 } */
 .news-hot .news-hot-sub img {
-    filter: brightness(65%);
+    filter: brightness(85%);
 }
 
 .news-hot .content-hot-sub {
