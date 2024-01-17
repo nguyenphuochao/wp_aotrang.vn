@@ -1,0 +1,490 @@
+/* Reset css */
+body {
+    font-family: "Roboto", sans-serif
+}
+
+
+a {
+    text-decoration: none !important;
+}
+
+::placeholder {
+    color: #201e1e;
+    padding: 5px;
+}
+
+nav li.active {
+    border: 1px solid #ee8010;
+    border-radius: 15px;
+
+}
+
+/* contants hr */
+hr {
+    height: 5px;
+    background-color: grey;
+    margin-top: 0px;
+}
+
+hr.line {
+    margin-top: 10px;
+    height: 3px;
+    border-bottom: dotted;
+    opacity: .3;
+}
+
+hr.line-title {
+    height: auto;
+    background-color: rgb(215, 220, 225);
+    margin: 5px 0 5px 0;
+}
+
+hr.footer {
+    height: 0.2px;
+    background-color: rgba(52, 50, 50, 0.3);
+    margin-top: 18px;
+    margin-bottom: 7px;
+}
+
+/* End contants hr */
+.col-image {
+    overflow: hidden;
+    position: relative;
+}
+
+.col-image img {
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.col-image img:hover {
+    transform: scale(1.1);
+}
+
+/* Root color */
+.bg-orange {
+    background-color: #F48E4F;
+}
+
+.text-orange {
+    color: #FF7200;
+}
+
+.text-grey {
+    color: #808280;
+}
+
+.text-dark {
+    color: black !important;
+}
+
+.text-dark-light {
+    color: #464343;
+}
+
+.text-primary {
+    color: #130f6d !important;
+}
+
+.bg-primary {
+    background-color: #130f6d !important;
+}
+
+.bg-primary-light {
+    background-color: #0186eb;
+}
+
+.text-brown {
+    color: #3E0204 !important;
+}
+
+/* End Root color */
+
+/* fontawesome*/
+i.fa-pencil {
+    font-size: 10px;
+}
+
+i.fa-chevron-down {
+    font-size: 10px;
+}
+
+i.fa-chevron-right {
+    font-size: 10px;
+}
+
+nav i.fa-magnifying-glass {
+    cursor: pointer;
+}
+
+/* End fontawesome */
+
+/* Navigation */
+nav {
+    max-height: 40px;
+}
+
+nav.nav-desktop {
+    border-radius: 5px;
+    border: 1px solid #ee8010;
+    background-color: white;
+}
+
+nav .nav-item.active {
+    border: 1px solid #ee8010;
+    border-radius: 15px;
+    background-color: #F48E4F;
+}
+
+nav .nav-item.active a.nav-link {
+    color: rgb(70, 67, 67) !important;
+}
+
+nav .nav-item .nav-link {
+    color: rgb(70, 67, 67) !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+nav .nav-item:hover {
+    border: 1px solid #ee8010;
+    border-radius: 15px;
+    background-color: #F48E4F;
+}
+
+nav .nav-item:hover a.nav-link {
+    color: rgb(70, 67, 67) !important;
+}
+
+nav form [type=text] {
+    height: 27px;
+    margin-top: 6px;
+    border-radius: 10px;
+}
+
+nav .dropdown:hover>.dropdown-menu {
+    display: block;
+    text-transform: uppercase;
+    background-color: white;
+}
+
+nav .dropdown>.dropdown-menu a.dropdown-item:hover {
+    background-color: #F48E4F;
+}
+
+nav .dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+/* Nav mobile */
+.nav-mobile {
+    position: relative;
+    display: none;
+    height: 100px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #F48E4F;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 12px;
+    color: #201e1e;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.nav-mobile .social-media {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-mobile #dropdown-icon {
+    color: #464343;
+}
+
+.nav-mobile .social-media li {
+    margin: 5px;
+    font-size: 30px;
+    list-style: none;
+}
+
+.nav-mobile form#form-search-mobile {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-mobile form#form-search-mobile input[type=text] {
+    width: 575px;
+    height: 27px;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.09);
+}
+
+/* End nav mobile */
+/* End Navigation */
+
+/* List News Component*/
+.news-hot .content-hot {
+    position: absolute;
+    width: 95%;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    border: 4px solid #332002;
+    padding: 10px 15px;
+    color: #3e0204;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+
+/* Thêm border thứ hai bằng pseudo-element */
+/* .news-hot .content-hot::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    width: 101%;
+    left: 305px;
+    bottom: 0px;
+    transform: translateX(-50%);
+    border: 4px solid #f5e0a9;
+    padding: 5px;
+    font-weight: bold;
+    border-radius: 10px;
+    height: auto;
+    pointer-events: none;
+} */
+.news-hot .news-hot-sub img {
+    filter: brightness(65%);
+}
+
+.news-hot .content-hot-sub {
+    position: absolute;
+    bottom: 0px;
+    width: 93%;
+    padding-left: 5px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(5, 5, 5, 0));
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 100%, transparent 100%);
+    color: white;
+    padding-bottom: 10px;
+
+}
+
+.news-hot .news-hot-main .content-hot h1 {
+    font-size: 27px;
+}
+
+.news-hot .owl-caurosel-news-hot {
+    display: none;
+}
+
+.list-news .bg-orange h4,
+.list-news .bg-orange h5 {
+    width: 100%;
+    position: absolute;
+    bottom: -10px;
+    padding: 20px;
+    color: black;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 1));
+    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    mask-image: linear-gradient(to top, black 80%, transparent 100%)
+}
+
+.list-news h6 {
+    font-size: 15px;
+}
+
+.list-news .category_name_button {
+    font-size: 13px;
+    padding: 2px 8px;
+    border: 1px solid #FF7200;
+    background-color: #F48E4F;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer .bottom-footer {
+    padding-left: 33px;
+}
+
+footer .bottom-footer a {
+    color: black;
+}
+
+/* End List News Component */
+
+/* Reponsive ở đây */
+@media screen and (max-width: 1200px) {
+    nav {
+        max-height: 60px;
+    }
+
+    nav a.nav-link {
+        font-size: 13px;
+    }
+
+    .news-hot .content-hot::before {
+        left: 256px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .logo-image {
+        text-align: center;
+    }
+
+    nav {
+        max-height: 100px;
+    }
+
+    nav.nav-desktop {
+        display: none;
+    }
+
+    nav.nav-mobile {
+        display: block;
+    }
+
+    nav a.nav-link {
+        font-size: initial;
+    }
+
+    nav #collapsibleNavId {
+        z-index: 999;
+        background-color: #FF7200;
+        margin-left: -16px;
+        margin-right: -16px;
+    }
+
+    .news-hot-main img {
+        height: 420px;
+    }
+
+    .news-hot .content-hot::before {
+        left: 189px;
+    }
+
+    footer .bottom-footer {
+        padding-left: 0px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .nav-mobile form#form-search-mobile input[type=text] {
+        width: 423px;
+    }
+
+    .news-hot .news-hot-sub {
+        display: none;
+    }
+
+    .list-news h5,
+    .list-news span {
+        font-size: 13px;
+    }
+
+    .news-hot .content-hot::before {
+        left: 244px;
+    }
+
+    .news-hot .owl-caurosel-news-hot {
+        display: block;
+    }
+
+    .news-hot .owl-caurosel-news-hot img {
+        height: 220px;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .logo-image img {
+        width: 120px;
+    }
+
+    .nav-mobile form#form-search-mobile input[type=text] {
+        width: 430px;
+    }
+
+    .news-hot .news-hot-main img {
+        height: 378px;
+    }
+
+    .news-hot .content-hot h3 {
+        margin-top: 10px;
+        font-size: 20px;
+    }
+
+    .news-hot .content-hot::before {
+        display: none;
+    }
+
+    .list-news .bg-orange .col-image img {
+        height: 190px;
+    }
+
+    .list-news .bg-orange .col-image h4 {
+        font-size: 13.28px;
+    }
+
+    section h3 {
+        font-size: 22px;
+    }
+
+    /* Footer */
+    footer h5,
+    footer div {
+        font-size: 14px;
+    }
+
+}
+
+@media screen and (max-width: 475px) {
+    .nav-mobile form#form-search-mobile input[type=text] {
+        width: 308px;
+    }
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
