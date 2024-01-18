@@ -3,7 +3,7 @@
         <div class="pt-1">
             <div class="row">
                 <div class="col-md-8 pt-2 pl-lg-5">
-                    <h5 style="color: #212020;"><strong>CÔNG TY CP TRUYỀN THÔNG BRIGHT STAR</strong></h5>
+                    <h5 class="d-none d-md-block" style="color: #212020;"><strong>CÔNG TY CP ĐẦU TƯ BRIGHT STAR</strong></h5>
                     <div>Địa chỉ: 4/6B Văn Chung, Phường 13, Quận Tân Bình, Thành phố Hồ Chí Minh</div>
                     <div>Điện thoại/Fax: 028.62966189</div>
                     <div>Chịu trách nhiệm nội dung: Ông Đoàn Lê Khang</div>
@@ -18,7 +18,6 @@
         <hr class="footer">
         <div class="bottom-footer">
             <div>Giấy phép số 18/GP-STTTT do Sở Thông Tin và Truyền Thông TP.HCM cấp ngày 08/03/2021</div>
-            <div>Bản quyền thuộc về Bright Star Media.</div>
             <div><a href="https://aotrang.vn/dieu-khoan-va-chinh-sach.html">Điều khoản và chính sách</a></div>
         </div>
     </footer>

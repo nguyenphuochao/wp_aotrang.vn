@@ -1,6 +1,3 @@
-<?php 
-/* Template Name : Detail */
-?>
 <?php get_header(); ?>
 <div class="container detail">
     <!-- Breadcrumb -->

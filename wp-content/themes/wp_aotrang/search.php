@@ -54,7 +54,7 @@
                 <?php $i = 0; ?>
                 <?php if (have_posts()) : ?>
                     <?php while (have_posts()) : the_post(); ?>
-                        <?php if ($i > 4 && $i < 30) : ?>
+                        <?php if ($i > 4 && $i < 40) : ?>
                             <div class="col-md-4 mb-2">
                                 <div class="image-thumnail-3"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail() ?></a></div>
                             </div>

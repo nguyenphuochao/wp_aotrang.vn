@@ -89,10 +89,10 @@
     </section>
     <!-- End News Hot -->
     <hr class="line">
-    <!-- Đời sống gen z-->
+    <!-- Tuổi trẻ -->
     <div class="row mt-2">
         <div class="col-md-9">
-            <section class="list-news doi-song-gen-z">
+            <section class="list-news tuoi-tre">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h3><strong><a class="text-dark" href="<?php echo $parent[1][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[1][1]); ?></a></strong></h3>
@@ -122,7 +122,7 @@
                 <div class="owl-carousel owl-theme">
                     <!-- Get post News Query -->
                     <?php $getposts = new WP_query();
-                    $getposts->query('post_status=publish&showposts=9&post_type=post&category_name=doi-song-gen-z'); ?>
+                    $getposts->query('post_status=publish&showposts=9&post_type=post&category_name=tuoi-tre'); ?>
                     <?php global $wp_query;
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
@@ -140,7 +140,7 @@
                 <div class="row">
                     <!-- Get post News Query -->
                     <?php $getposts = new WP_query();
-                    $getposts->query('post_status=publish&showposts=4&post_type=post&category_name=doi-song-gen-z&offset=9'); ?>
+                    $getposts->query('post_status=publish&showposts=4&post_type=post&category_name=tuoi-tre&offset=9'); ?>
                     <?php global $wp_query;
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
@@ -352,17 +352,12 @@
             </section>
         </div>
     </div>
-    <!-- Ăn và chơi -->
+    <!-- Phong cách-->
     <hr class="line">
     <div class="row mt-2">
         <div class="col-md-9">
-            <section class="list-news doi-song-gen-z">
+            <section class="list-news phong-cach">
                 <div class="d-flex justify-content-between align-items-center">
-                    <?php
-                    $parent_category_slug  = 'an-choi';
-                    $parent_category = get_term_by('slug', $parent_category_slug, 'category');
-                    $child_categories = get_categories(array('parent' => $parent_category->term_id));
-                    ?>
                     <div>
                         <h3><strong><a class="text-dark" href="<?php echo $parent[4][2]; ?>"><?php echo chuyenChuHoaThanhThuong($parent[4][1]); ?></a></strong></h3>
                     </div>
@@ -389,7 +384,7 @@
                 <div class="owl-carousel owl-theme">
                     <!-- Get post News Query -->
                     <?php $getposts = new WP_query();
-                    $getposts->query('post_status=publish&showposts=9&post_type=post&category_name=an-choi'); ?>
+                    $getposts->query('post_status=publish&showposts=9&post_type=post&category_name=phong-cach'); ?>
                     <?php global $wp_query;
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
@@ -404,7 +399,7 @@
                 <div class="row">
                     <!-- Get post News Query -->
                     <?php $getposts = new WP_query();
-                    $getposts->query('post_status=publish&showposts=4&post_type=post&category_name=an-choi&offset=9'); ?>
+                    $getposts->query('post_status=publish&showposts=4&post_type=post&category_name=phong-cach&offset=9'); ?>
                     <?php global $wp_query;
                     $wp_query->in_the_loop = true; ?>
                     <?php while ($getposts->have_posts()) : $getposts->the_post(); ?>
@@ -445,11 +440,6 @@
         <div class="col-md-9">
             <section class="list-news viec-lam">
                 <div class="d-flex justify-content-between align-items-center">
-                    <?php
-                    $parent_category_slug  = 'viec-lam';
-                    $parent_category = get_term_by('slug', $parent_category_slug, 'category');
-                    $child_categories = get_categories(array('parent' => $parent_category->term_id));
-                    ?>
                     <div>
                         <h3><strong><a class="text-dark" href="<?php echo $parent[5][2] ?>"><?php echo chuyenChuHoaThanhThuong($parent[5][1]); ?></a></strong></h3>
                     </div>

@@ -4,11 +4,11 @@
             <div class="row">
                 <div class="col-md-8 pt-2 pl-lg-5">
                     <h5 style="color: #212020;"><strong><?php echo get_field('footer_left_title','option') ?></strong></h5>
-                    <?php echo get_field('footer_left_content') ?>
+                    <?php echo get_field('footer_left_content','option') ?>
                 </div>
                 <div class="col-md-4 pt-2 pl-lg-5">
                     <h5 style="color: #212020;"><strong><?php echo get_field('footer_right_title','option') ?></strong></h5>
-                    <?php echo get_field('footer_right_content') ?>
+                    <?php echo get_field('footer_right_content','option') ?>
                 </div>
             </div>
         </div>

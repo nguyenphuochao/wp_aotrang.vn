@@ -56,6 +56,7 @@ define( 'AUTH_SALT',        'sV.g;MeAh42~t>0ECLH.Qq#xcV.lL9mua]83#d9N?ZN,h9mTZhb
 define( 'SECURE_AUTH_SALT', 'B<){o h{/SPL<}F5u|sfduE[W8#bS;~kg+ELo?I )0Nl]1Soa%}{kf`Rb:Pt t,,' );
 define( 'LOGGED_IN_SALT',   'f0<1O.f)!+BV?KC`O|SN`gN98-h2:w0WiR`Hp<T5woCIftX$,]T:F`u*9V<(Ny#e' );
 define( 'NONCE_SALT',       'zV)h2O9/PuhwWu~PS7$*86?C/`+ |+1J58/vD(T&q^}tvZ9JKEz)?uJN -L(X$Bt' );
+define('WP_MEMORY_LIMIT', '256M');
 
 /**#@-*/
 
