@@ -3,23 +3,18 @@
         <div class="pt-1">
             <div class="row">
                 <div class="col-md-8 pt-2 pl-lg-5">
-                    <?php
-                    $footer_left = get_field('footer_left', 'option');
-                    $footer_right = get_field('footer_right', 'option');
-                    $footer_bottom = get_field('footer_bottom', 'option');
-                    ?>
-                    <h5 style="color: #212020;"><strong><?php echo $footer_left['title']; ?></strong></h5>
-                    <?php echo $footer_left['content']; ?>
+                    <h5 style="color: #212020;"><strong><?php echo get_field('footer_left_title','option') ?></strong></h5>
+                    <?php echo get_field('footer_left_content','option') ?>
                 </div>
                 <div class="col-md-4 pt-2 pl-lg-5">
-                    <h5 style="color: #212020;"><strong><?php echo $footer_right['title']; ?></strong></h5>
-                    <?php echo $footer_right['content']; ?>
+                    <h5 style="color: #212020;"><strong><?php echo get_field('footer_right_title','option') ?></strong></h5>
+                    <?php echo get_field('footer_right_content','option') ?>
                 </div>
             </div>
         </div>
         <hr class="footer">
         <div class="bottom-footer">
-            <?php echo $footer_bottom; ?>
+            <?php echo get_field('footer_bottom','option') ?>
         </div>
     </footer>
 </div>

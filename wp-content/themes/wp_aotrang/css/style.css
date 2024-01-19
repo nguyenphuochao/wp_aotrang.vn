@@ -429,7 +429,7 @@ footer .bottom-footer a {
     }
 
     .news-hot .owl-caurosel-news-hot img {
-        height: 220px;
+        height: 210px;
     }
 
 }
@@ -454,6 +454,10 @@ footer .bottom-footer a {
 
     .news-hot .content-hot::before {
         display: none;
+    }
+
+    .list-news .owl-carousel img {
+        height: 210px;
     }
 
     .list-news .bg-orange .col-image img {
