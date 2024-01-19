@@ -1,6 +1,7 @@
-.category h6.title{
+.category h6.title {
     font-size: 19px;
 }
+
 .category .image-thumnail-1 img {
     width: 100%;
     height: 260px;
@@ -15,16 +16,28 @@
     width: 100%;
     height: 161px;
 }
-.category .quatrang .current{
+
+.category .quatrang .current {
     background-color: #0056BB;
     color: wheat;
 }
-.category .page-numbers{
+
+.category .page-numbers {
     background-color: white;
     color: #0056BB;
     padding: 5px;
     border: 1px solid rgb(179, 183, 179);
 }
+
 .category .quatrang {
     font-size: 15px;
+}
+
+@media screen and (max-width:500px) {
+
+    .category .image-thumnail-1 img,
+    .category .image-thumnail-2 img,
+    .category .image-thumnail-3 img {
+        height: 210px;
+    }
 }

@@ -147,7 +147,6 @@ nav .nav-item .nav-link {
 }
 
 nav .nav-item:hover {
-    border: 1px solid #ee8010;
     border-radius: 15px;
     background-color: #F48E4F;
 }
@@ -255,6 +254,26 @@ nav .dropdown>.dropdown-toggle:active {
 /* End Navigation */
 
 /* List News Component*/
+.owl-carousel .owl-nav .owl-prev {
+    position: absolute;
+    top: 60px;
+    left: 0px;
+}
+
+.owl-carousel .owl-nav .owl-prev>span,
+.owl-carousel .owl-nav .owl-next>span {
+    font-size: 35px;
+    background: none;
+    font-weight: bold;
+    color: orange;
+}
+
+.owl-carousel .owl-nav .owl-next {
+    position: absolute;
+    top: 60px;
+    right: 0px;
+}
+
 .news-hot .content-hot {
     position: absolute;
     width: 95%;
@@ -413,6 +432,11 @@ footer .bottom-footer a {
 
     .news-hot .news-hot-sub {
         display: none;
+    }
+
+    .owl-carousel .owl-nav .owl-prev>span,
+    .owl-carousel .owl-nav .owl-next>span {
+        font-size: 35px;
     }
 
     .list-news h5,
