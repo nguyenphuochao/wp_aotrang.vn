@@ -26,11 +26,11 @@
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/detail.css">
     <link rel="stylesheet" href="<?php bloginfo('template_directory') ?>/css/category.css">
     <?php wp_head(); ?>
-    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2769146024033953" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2769146024033953" crossorigin="anonymous"></script>
     <ins class="adsbygoogle testad" style="display:block" data-ad-client="ca-pub-2769146024033953" data-ad-slot="4681131052" data-ad-format="auto" data-full-width-responsive="true"></ins>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script> -->
+    </script>
 </head>
 
 <body>
